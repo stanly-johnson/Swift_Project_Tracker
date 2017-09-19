@@ -72,7 +72,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="vMK-Y0-i3J"/>
                                 </constraints>
-                                <state key="normal" title="Add New">
+                                <state key="normal" title="New Project">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
@@ -120,7 +120,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="JMt-C9-3Mb"/>
                                 </constraints>
-                                <state key="normal" title="Add New">
+                                <state key="normal" title="New Person">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
