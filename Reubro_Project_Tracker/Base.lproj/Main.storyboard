@@ -48,7 +48,7 @@
                             <constraint firstItem="60V-MK-BIr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="whY-bI-Al1"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="IQn-0d-gPE"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="icons8-Home-30.png" id="IQn-0d-gPE"/>
                     <connections>
                         <outlet property="tableView" destination="ACG-nY-5Uk" id="Xb4-eD-lx4"/>
                     </connections>
@@ -112,7 +112,7 @@
                             <constraint firstAttribute="trailing" secondItem="4TD-g1-HuJ" secondAttribute="trailing" id="kyu-44-hWj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Projects" id="Qoi-A7-TEB"/>
+                    <tabBarItem key="tabBarItem" title="Projects" image="icons8-Project-30.png" id="Qoi-A7-TEB"/>
                     <connections>
                         <outlet property="tableView" destination="f5y-lQ-sbm" id="h8N-Qh-VDL"/>
                     </connections>
@@ -286,7 +286,7 @@
                             <constraint firstItem="2FI-ZQ-msP" firstAttribute="top" secondItem="MJ2-pf-gdk" secondAttribute="bottom" id="vdC-mT-dzX"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="People" id="tbe-8x-yTA"/>
+                    <tabBarItem key="tabBarItem" title="People" image="icons8-People-30.png" id="tbe-8x-yTA"/>
                     <connections>
                         <outlet property="actionButtonNewPerson" destination="MJ2-pf-gdk" id="mll-q8-r6P"/>
                         <outlet property="tableView" destination="sSw-za-iVk" id="S7F-LW-Zab"/>
@@ -405,4 +405,9 @@
             <point key="canvasLocation" x="-641" y="264"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-Home-30.png" width="30" height="30"/>
+        <image name="icons8-People-30.png" width="30" height="30"/>
+        <image name="icons8-Project-30.png" width="30" height="30"/>
+    </resources>
 </document>
