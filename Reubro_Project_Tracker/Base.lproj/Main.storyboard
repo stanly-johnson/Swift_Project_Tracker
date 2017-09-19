@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7xX-oH-clf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7xX-oH-clf">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Reubro_Project_Tracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -14,17 +19,33 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60V-MK-BIr">
+                                <rect key="frame" x="130" y="40" width="154" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="dL2-Mk-lbA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="60V-MK-BIr" secondAttribute="trailing" constant="110" id="bK2-Un-6yJ"/>
+                            <constraint firstItem="60V-MK-BIr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="110" id="nXx-Uv-1Be"/>
+                            <constraint firstItem="60V-MK-BIr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="whY-bI-Al1"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="IQn-0d-gPE"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="IQn-0d-gPE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-642" y="1085"/>
+            <point key="canvasLocation" x="-642.39999999999998" y="1030.4347826086957"/>
         </scene>
-        <!--Item 2-->
+        <!--Projects-->
         <scene sceneID="fX0-vi-uQC">
             <objects>
                 <viewController id="4xR-F2-mBC" customClass="ProjectsScreen" customModule="Reubro_Project_Tracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,17 +54,46 @@
                         <viewControllerLayoutGuide type="bottom" id="SQY-Il-qqe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="k5f-fY-czd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Projects" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22j-5p-h5P">
+                                <rect key="frame" x="130" y="40" width="154" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="WKu-Th-0L9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4TD-g1-HuJ">
+                                <rect key="frame" x="0.0" y="637" width="414" height="50"/>
+                                <color key="backgroundColor" red="0.38468250590000003" green="1" blue="0.4147280042" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="vMK-Y0-i3J"/>
+                                </constraints>
+                                <state key="normal" title="Add New">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4TD-g1-HuJ" firstAttribute="leading" secondItem="k5f-fY-czd" secondAttribute="leading" id="4NT-8W-UVA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="22j-5p-h5P" secondAttribute="trailing" constant="110" id="Chd-Ci-KWe"/>
+                            <constraint firstItem="22j-5p-h5P" firstAttribute="top" secondItem="PDZ-PG-LwM" secondAttribute="bottom" constant="20" id="NSj-Gu-9dW"/>
+                            <constraint firstItem="22j-5p-h5P" firstAttribute="leading" secondItem="k5f-fY-czd" secondAttribute="leadingMargin" constant="110" id="Qm1-Kc-4Y5"/>
+                            <constraint firstItem="SQY-Il-qqe" firstAttribute="top" secondItem="4TD-g1-HuJ" secondAttribute="bottom" id="drC-HB-Hfa"/>
+                            <constraint firstAttribute="trailing" secondItem="4TD-g1-HuJ" secondAttribute="trailing" id="kyu-44-hWj"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="Qoi-A7-TEB"/>
+                    <tabBarItem key="tabBarItem" title="Projects" id="Qoi-A7-TEB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p37-2w-h3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="311" y="591"/>
         </scene>
-        <!--Item 1-->
+        <!--People-->
         <scene sceneID="w06-DK-IiX">
             <objects>
                 <viewController id="nAH-K2-EIW" customClass="PeopleScreen" customModule="Reubro_Project_Tracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,15 +102,44 @@
                         <viewControllerLayoutGuide type="bottom" id="2FI-ZQ-msP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9lP-cR-C9s">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="People" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uo-7S-oxB">
+                                <rect key="frame" x="130" y="40" width="154" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="sj3-wZ-NK8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJ2-pf-gdk">
+                                <rect key="frame" x="0.0" y="637" width="414" height="50"/>
+                                <color key="backgroundColor" red="0.38468250587203534" green="1" blue="0.41472800424366563" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="JMt-C9-3Mb"/>
+                                </constraints>
+                                <state key="normal" title="Add New">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6uo-7S-oxB" firstAttribute="top" secondItem="5UI-A7-b9a" secondAttribute="bottom" constant="20" id="5kn-10-V50"/>
+                            <constraint firstItem="6uo-7S-oxB" firstAttribute="leading" secondItem="9lP-cR-C9s" secondAttribute="leadingMargin" constant="110" id="F9f-a1-Vci"/>
+                            <constraint firstItem="MJ2-pf-gdk" firstAttribute="leading" secondItem="9lP-cR-C9s" secondAttribute="leading" id="WoV-9p-R6k"/>
+                            <constraint firstAttribute="trailing" secondItem="MJ2-pf-gdk" secondAttribute="trailing" id="omL-ZC-aox"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6uo-7S-oxB" secondAttribute="trailing" constant="110" id="qNj-9d-k9S"/>
+                            <constraint firstItem="2FI-ZQ-msP" firstAttribute="top" secondItem="MJ2-pf-gdk" secondAttribute="bottom" id="vdC-mT-dzX"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="tbe-8x-yTA"/>
+                    <tabBarItem key="tabBarItem" title="People" id="tbe-8x-yTA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hde-wL-NsF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="311" y="-63"/>
+            <point key="canvasLocation" x="309.60000000000002" y="-63.418290854572717"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="r6R-6L-4uD">
@@ -72,9 +151,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Nri-lR-z2c"/>
                         <segue destination="nAH-K2-EIW" kind="relationship" relationship="viewControllers" id="gIa-yF-Nw3"/>
                         <segue destination="4xR-F2-mBC" kind="relationship" relationship="viewControllers" id="8dq-7Z-DAf"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Nri-lR-z2c"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Zi-kb-KZU" userLabel="First Responder" sceneMemberID="firstResponder"/>
