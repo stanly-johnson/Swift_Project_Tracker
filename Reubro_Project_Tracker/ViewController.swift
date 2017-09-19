@@ -8,18 +8,31 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+        @IBOutlet var tableView: UITableView!
+        var items: [String] = ["We", "Heart", "Swift"]
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        }
+        
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return self.items.count;
+        }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        cell.textLabel?.text = self.items[indexPath.row]
+        
+        return cell
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
+    
+    
 }
+
 
