@@ -13,7 +13,7 @@ class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource
        @IBOutlet weak var actionButtonNewPerson: UIButton!
    
     
-    var items: [String] = ["We", "Heart", "Swift"]
+    var items: [String] = ["Person One", "Person Two", "Person Three", "Person Four", "Person Five", "Person Six"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

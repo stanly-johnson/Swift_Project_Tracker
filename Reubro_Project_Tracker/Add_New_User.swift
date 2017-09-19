@@ -10,6 +10,12 @@ import UIKit
 
 class Add_New_User: UIViewController {
 
+    
+    @IBOutlet weak var firstName: UITextField!
+    @IBOutlet weak var lastName: UITextField!   
+    @IBOutlet weak var desg: UITextField!
+    @IBOutlet weak var rate: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
