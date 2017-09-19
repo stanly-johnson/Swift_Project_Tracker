@@ -8,28 +8,34 @@
 
 import UIKit
 
-class PeopleScreen: UIViewController {
-
+class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet var tableView: UITableView!
+       @IBOutlet weak var actionButtonNewPerson: UIButton!
+   
+    
+    var items: [String] = ["We", "Heart", "Swift"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "celltwo")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.items.count;
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "celltwo", for: indexPath)
+        
+        cell.textLabel?.text = self.items[indexPath.row]
+        
+        return cell
+    }
 
+        @IBAction func actionNewPersonButton(_ sender: Any) {
+             performSegue(withIdentifier: "newPersonSegue", sender: sender)
+    }
+    
 }

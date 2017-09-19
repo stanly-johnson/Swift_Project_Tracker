@@ -15,6 +15,8 @@
 		4C71BF531F70FBF000C073EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C71BF511F70FBF000C073EA /* LaunchScreen.storyboard */; };
 		4C71BF5B1F70FCB800C073EA /* PeopleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C71BF5A1F70FCB800C073EA /* PeopleScreen.swift */; };
 		4C71BF5D1F70FCCB00C073EA /* ProjectsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C71BF5C1F70FCCB00C073EA /* ProjectsScreen.swift */; };
+		4CCE8D4E1F7122A000E2B3CD /* Add_New_User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE8D4D1F7122A000E2B3CD /* Add_New_User.swift */; };
+		4CCE8D501F7122EE00E2B3CD /* Add_New_Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE8D4F1F7122EE00E2B3CD /* Add_New_Project.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		4C71BF541F70FBF000C073EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C71BF5A1F70FCB800C073EA /* PeopleScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleScreen.swift; sourceTree = "<group>"; };
 		4C71BF5C1F70FCCB00C073EA /* ProjectsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsScreen.swift; sourceTree = "<group>"; };
+		4CCE8D4D1F7122A000E2B3CD /* Add_New_User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Add_New_User.swift; sourceTree = "<group>"; };
+		4CCE8D4F1F7122EE00E2B3CD /* Add_New_Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Add_New_Project.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 				4C71BF471F70FBEF00C073EA /* ViewController.swift */,
 				4C71BF5A1F70FCB800C073EA /* PeopleScreen.swift */,
 				4C71BF5C1F70FCCB00C073EA /* ProjectsScreen.swift */,
+				4CCE8D4D1F7122A000E2B3CD /* Add_New_User.swift */,
+				4CCE8D4F1F7122EE00E2B3CD /* Add_New_Project.swift */,
 				4C71BF491F70FBF000C073EA /* Main.storyboard */,
 				4C71BF4F1F70FBF000C073EA /* Assets.xcassets */,
 				4C71BF511F70FBF000C073EA /* LaunchScreen.storyboard */,
@@ -147,8 +153,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C71BF5D1F70FCCB00C073EA /* ProjectsScreen.swift in Sources */,
+				4CCE8D4E1F7122A000E2B3CD /* Add_New_User.swift in Sources */,
 				4C71BF4E1F70FBF000C073EA /* Reubro_Project_Tracker.xcdatamodeld in Sources */,
 				4C71BF481F70FBEF00C073EA /* ViewController.swift in Sources */,
+				4CCE8D501F7122EE00E2B3CD /* Add_New_Project.swift in Sources */,
 				4C71BF5B1F70FCB800C073EA /* PeopleScreen.swift in Sources */,
 				4C71BF461F70FBEF00C073EA /* AppDelegate.swift in Sources */,
 			);
