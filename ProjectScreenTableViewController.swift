@@ -13,10 +13,16 @@ class ProjectScreenTableViewController: UITableViewController {
     
     
     var data : [String] = ["One","Two"]
+    var nameProject = String()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Projects"
+        
+        
+        print(nameProject)
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,6 +57,22 @@ class ProjectScreenTableViewController: UITableViewController {
     }
     
 
+    
+    
+    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+       
+      
+        //if let sourceViewController = sender.sourceViewController as? Add_New_Project, nameProject = sourceViewController.nameProject {
+        
+            let newIndexPath = IndexPath(row: data.count, section: 0)
+            data.append(nameProject)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        //}
+
+    }
+    
+
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

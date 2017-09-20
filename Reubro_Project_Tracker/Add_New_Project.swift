@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import os.log
 
-class Add_New_Project: UIViewController {
-
+class Add_New_Project: UIViewController, UITextFieldDelegate {
+    
+   
+    @IBOutlet weak var saveButton: UIBarButtonItem!   
+    @IBOutlet weak var nameOfProject: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.nameOfProject.delegate = self
+        updateSaveButtonState()
         // Do any additional setup after loading the view.
     }
 
@@ -21,21 +28,50 @@ class Add_New_Project: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK : Navigation
     
-    @IBAction func actionAddNewProject(_ sender: Any) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         
-        let saveConfirmAlert2 = UIAlertController(title: "New Project Added", message: "A new project has been added", preferredStyle: UIAlertControllerStyle.alert)
-        let okAction2 = UIAlertAction(title:"OK", style:.default) { (action:UIAlertAction!) in
-            
-            self.dismiss(animated: true, completion: nil)
-            
+        
+        // Configure the destination view controller only when the save button is pressed.
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
         }
-        saveConfirmAlert2.addAction(okAction2)
-        present(saveConfirmAlert2, animated: true, completion: nil)
+        
+        let name = String(nameOfProject.text!)
+        if let destinationViewController = segue.destination as? ProjectScreenTableViewController{
+            
+            destinationViewController.nameProject = name!
+        }
+        
     }
     
-  
-    @IBAction func actionCancelButton(_ sender: Any) {
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        updateSaveButtonState()
+        navigationItem.title = nameOfProject.text
+    }
+    
+
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disable the Save button while editing.
+        saveButton.isEnabled = false
+    }
+    
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text field is empty.
+        let text = nameOfProject.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
+    }
+    
+
+    @IBAction func actionCancelButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
 }
