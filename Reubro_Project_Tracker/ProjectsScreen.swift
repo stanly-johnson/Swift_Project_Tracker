@@ -8,35 +8,29 @@
 
 import UIKit
 
-class ProjectsScreen: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet var tableView: UITableView!
-    var items: [String] = ["We", "Heart", "Swift"]
+class ProjectsScreen: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    //MARK : Properties
+    var meals = [ProjectsScreen]()
+   
+    
+    private func loadSampleMeals() {
         
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell3")
-    }
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count;
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath)
+        guard let meal1 = ProjectsScreen(name: "Caprese Salad") else {
+            fatalError("Unable to instantiate meal1")
+        }
         
-        cell.textLabel?.text = self.items[indexPath.row]
+        guard let meal2 = ProjectsScreen(name: "Chicken and Potatoes") else {
+            fatalError("Unable to instantiate meal2")
+        }
         
-        return cell
-    }
-    
-    
-    @IBAction func actionAddNewProject(_ sender: Any) {
+        guard let meal3 = ProjectsScreen(name: "Pasta with Meatballs") else {
+            fatalError("Unable to instantiate meal2")
+        }
         
-        performSegue(withIdentifier: "newProjectSegue", sender: sender)
+
+        
     }
-    
     
     
 }
