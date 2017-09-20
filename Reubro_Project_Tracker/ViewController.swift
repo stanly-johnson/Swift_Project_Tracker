@@ -10,8 +10,9 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
         @IBOutlet var tableView: UITableView!
-        var items: [String] = ["We", "Heart", "Swift"]
-        
+        var items: [String] = ["Memmbles", "Chronic Compass", "Swift"]
+        var activity: [Int] = [1,1,0]
+    
         override func viewDidLoad() {
             super.viewDidLoad()
             
@@ -19,18 +20,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return self.items.count;
-        }
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = self.items[indexPath.row]
+        let cellIdentifier = "HomeTableViewCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? HomeTableViewCell
+            else {
+            fatalError("The dequeued cell is not an instance of ProjectTableViewCell.")
+                }
+        
+        let name = items[indexPath.row]
+        let status = activity[indexPath.row]
+        
+        if status == 0
+        {
+            cell.nameStatusOfProject.textColor = UIColor.black
+        }
+        
+        else
+        {
+           cell.nameStatusOfProject.textColor = UIColor.blue
+        }
+        
+        cell.nameStatusOfProject.text = name;
         
         return cell
     }
-    
     
     
 }
