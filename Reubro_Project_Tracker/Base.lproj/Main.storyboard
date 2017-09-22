@@ -119,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7d3-08-gID" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4536.231884057971" y="600.81521739130437"/>
+            <point key="canvasLocation" x="3314" y="-76"/>
         </scene>
         <!--Add New Project-->
         <scene sceneID="UwF-5d-msH">
@@ -220,7 +220,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dwG-w2-SxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="BTN-Og-Cgv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3810.144927536232" y="589.4021739130435"/>
+            <point key="canvasLocation" x="3677" y="721"/>
         </scene>
         <!--Person View-->
         <scene sceneID="RKz-Vr-Uo6">
@@ -563,6 +563,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="EUd-zc-Ne9" id="HWD-cn-UgE"/>
+                                    <segue destination="lyL-z0-NGf" kind="show" identifier="ShowItem" id="9ce-1a-fwC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -574,7 +575,7 @@
                     <navigationItem key="navigationItem" id="5Yd-Ea-Oum">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="ySe-LH-JTD">
                             <connections>
-                                <segue destination="tlN-Xw-6TI" kind="presentation" id="55S-kE-ULl"/>
+                                <segue destination="tlN-Xw-6TI" kind="presentation" identifier="AddItem" id="55S-kE-ULl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -599,7 +600,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyg-1K-k08" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2902.898550724638" y="587.77173913043487"/>
+            <point key="canvasLocation" x="2820" y="1160"/>
         </scene>
         <!--Home-->
         <scene sceneID="f2O-s9-1vZ">
@@ -626,4 +627,7 @@
         <image name="icons8-People-30.png" width="30" height="30"/>
         <image name="icons8-Project-30.png" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="9ce-1a-fwC"/>
+    </inferredMetricsTieBreakers>
 </document>
