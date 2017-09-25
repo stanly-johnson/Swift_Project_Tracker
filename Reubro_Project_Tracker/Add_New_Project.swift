@@ -71,7 +71,14 @@ class Add_New_Project: UIViewController, UITextFieldDelegate {
     
 
     @IBAction func actionCancelButtonPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        
+       if self.navigationController == nil {
+            dismiss(animated: true, completion: nil)
+        }
+        
+       else{
+       self.navigationController?.popViewController(animated: true)
+        }
     }
     
 }

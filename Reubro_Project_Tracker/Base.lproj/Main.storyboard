@@ -175,7 +175,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dwG-w2-SxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="BTN-Og-Cgv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2038" y="955"/>
+            <point key="canvasLocation" x="2051" y="1027"/>
         </scene>
         <!--People Screen-->
         <scene sceneID="w06-DK-IiX">
@@ -193,7 +193,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="101" id="hJI-2Z-kW1" customClass="PeopleTableViewCell" customModule="Reubro_Project_Tracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PeopleTableViewCell" rowHeight="101" id="hJI-2Z-kW1" customClass="PeopleTableViewCell" customModule="Reubro_Project_Tracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hJI-2Z-kW1" id="bbn-vk-hje">
@@ -209,6 +209,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="peopleNameLabel" destination="XYD-lB-XVL" id="Pe1-9J-Lda"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -296,7 +299,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v3f-9h-QNQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-807" y="955"/>
+            <point key="canvasLocation" x="-807" y="1027"/>
         </scene>
         <!--Project Screen Table View Controller-->
         <scene sceneID="sn8-Gh-T4O">
@@ -344,7 +347,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4OU-lj-Hc2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="955"/>
+            <point key="canvasLocation" x="253" y="1027"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l9U-fN-QdZ">
@@ -362,7 +365,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyg-1K-k08" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1081" y="1529"/>
+            <point key="canvasLocation" x="1148" y="1559"/>
         </scene>
         <!--Home-->
         <scene sceneID="f2O-s9-1vZ">
@@ -390,6 +393,6 @@
         <image name="icons8-Project-30.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9ce-1a-fwC"/>
+        <segue reference="Ane-e6-cZd"/>
     </inferredMetricsTieBreakers>
 </document>

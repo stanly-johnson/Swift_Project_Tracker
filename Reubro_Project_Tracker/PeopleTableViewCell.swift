@@ -10,6 +10,7 @@ import UIKit
 
 class PeopleTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var peopleNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
