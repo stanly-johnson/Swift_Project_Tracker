@@ -11,11 +11,19 @@ import CoreData
 
 class Add_New_Person: UIViewController {
 
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var desgTextField: UITextField!
+    @IBOutlet weak var rateTextField: UITextField!
+    
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    
+    var people: [NSManagedObject] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
+            }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -23,14 +31,44 @@ class Add_New_Person: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+    @IBAction func actionSaveButton(_ sender: Any) {
+        let nameToSave = nameTextField.text
+        let desgToSave = desgTextField.text
+        let rateToSave = rateTextField.text
+        
+        //---saving to database ---//
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity =
+            NSEntityDescription.entity(forEntityName: "Person",
+                                       in: context)!
+        
+        let person = NSManagedObject(entity: entity,
+                                     insertInto: context)
+        
+        person.setValue(nameToSave, forKeyPath: "name")
+        person.setValue(desgToSave, forKey: "desg")
+        person.setValue(rateToSave, forKeyPath: "rate")
+        
+        do
+        {
+            try context.save()
+            print("saved")
+        }
+            
+        catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+        //---end of saving to database --//
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
+    
+    
+    
+    
+    @IBAction func actionCancelButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 
 }

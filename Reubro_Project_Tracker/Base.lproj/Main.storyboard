@@ -303,13 +303,28 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Person" id="BO8-SN-Hgq">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="GeK-KY-pxW"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="Uh1-E8-0uy"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="GeK-KY-pxW">
+                            <connections>
+                                <action selector="actionCancelButton:" destination="TYG-Jh-QBn" id="aeT-Sp-LXl"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="Uh1-E8-0uy">
+                            <connections>
+                                <action selector="actionSaveButton:" destination="TYG-Jh-QBn" id="7OD-Ti-T0R"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="GeK-KY-pxW" id="HbA-R6-Ylh"/>
+                        <outlet property="desgTextField" destination="Stu-I4-0LU" id="A7i-vP-MjV"/>
+                        <outlet property="nameTextField" destination="NTf-dc-TEr" id="6UG-Lc-xS8"/>
+                        <outlet property="rateTextField" destination="cOT-0u-Rnh" id="4ap-Gt-wyR"/>
+                        <outlet property="saveButton" destination="Uh1-E8-0uy" id="BBE-hy-ObH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y7m-9U-FQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2243.4782608695655" y="203.80434782608697"/>
+            <point key="canvasLocation" x="2319" y="204"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="r6R-6L-4uD">
