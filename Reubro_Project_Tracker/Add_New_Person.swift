@@ -23,6 +23,7 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameTextField.delegate = self
+        
         updateSaveButtonState()
 
             }
@@ -55,11 +56,11 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
         do
         {
             try context.save()
-            print("saved")
+            print("succesfully saved to database")
         }
             
         catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
+            print("Error!! Could not save. \(error), \(error.userInfo)")
         }
         
         //---end of saving to database --//
