@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class Add_New_Person: UIViewController {
+class Add_New_Person: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
@@ -22,6 +22,8 @@ class Add_New_Person: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.nameTextField.delegate = self
+        updateSaveButtonState()
 
             }
 
@@ -61,14 +63,40 @@ class Add_New_Person: UIViewController {
         }
         
         //---end of saving to database --//
+        
+        dismiss(animated: true, completion: nil)
 
     }
     
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        updateSaveButtonState()
+        navigationItem.title = nameTextField.text
+    }
+    
+    
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disable the Save button while editing.
+        saveButton.isEnabled = false
+    }
+
     
     
     @IBAction func actionCancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    private func updateSaveButtonState(){
+        
+    let text = nameTextField.text ?? ""
+    let rate = rateTextField.text ?? ""
+    //print (!test.isEmpty)
+    saveButton.isEnabled = true
+    
+    
+    }
+    
 
 }

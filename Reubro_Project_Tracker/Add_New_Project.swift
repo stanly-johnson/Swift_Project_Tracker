@@ -18,7 +18,7 @@ class Add_New_Project: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.nameOfProject.delegate = self
+        self.nameOfProject.delegate = self //setting the delegate with
         updateSaveButtonState()
         // Do any additional setup after loading the view.
     }
@@ -65,6 +65,7 @@ class Add_New_Project: UIViewController, UITextFieldDelegate {
     private func updateSaveButtonState() {
         // Disable the Save button if the text field is empty.
         let text = nameOfProject.text ?? ""
+        print (!text.isEmpty)
         saveButton.isEnabled = !text.isEmpty
     }
     

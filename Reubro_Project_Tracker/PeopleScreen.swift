@@ -34,6 +34,7 @@ class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         do {
             people = try managedContext.fetch(fetchRequest)
+            self.tableView.reloadData()
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
