@@ -36,7 +36,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ugT-Ya-YDl" id="2ZT-XA-l9a">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wI9-2V-FbG">
@@ -197,7 +197,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hJI-2Z-kW1" id="bbn-vk-hje">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="101"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYD-lB-XVL">
@@ -211,6 +211,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="peopleNameLabel" destination="XYD-lB-XVL" id="Pe1-9J-Lda"/>
+                                            <segue destination="TYG-Jh-QBn" kind="show" identifier="showPeopleDetail" id="aUu-rA-Hld"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -232,7 +233,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="WoO-vZ-7TL">
                             <connections>
                                 <action selector="actionAddNewPerson:" destination="nAH-K2-EIW" id="T0X-a9-tu9"/>
-                                <segue destination="J0z-FO-6SR" kind="presentation" id="ecy-fJ-3ie"/>
+                                <segue destination="J0z-FO-6SR" kind="presentation" identifier="addPeopleDetail" id="ecy-fJ-3ie"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -396,7 +397,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4pM-dA-cwZ" id="tgc-c8-tvF">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUd-zc-Ne9">
@@ -447,7 +448,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyg-1K-k08" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1148" y="1559"/>
+            <point key="canvasLocation" x="1138" y="1361"/>
         </scene>
         <!--Home-->
         <scene sceneID="f2O-s9-1vZ">
@@ -484,7 +485,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2G5-HK-fB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1319" y="204"/>
+            <point key="canvasLocation" x="1309" y="540"/>
         </scene>
     </scenes>
     <resources>
@@ -494,5 +495,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ane-e6-cZd"/>
+        <segue reference="aUu-rA-Hld"/>
     </inferredMetricsTieBreakers>
 </document>

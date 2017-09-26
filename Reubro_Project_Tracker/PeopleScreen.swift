@@ -8,12 +8,14 @@
 
 import UIKit
 import CoreData
+import os.log
 
 class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var buttonAddNewPerson: UIBarButtonItem!
     var people: [NSManagedObject] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,11 +82,44 @@ class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource
                 try managedObjectContext.save()
                 self.tableView.reloadData()
                 
-            } catch let error as NSError {
+            }
+            
+            catch let error as NSError {
                 print("Could not save. \(error), \(error.userInfo)")
             }
         }
         
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        switch (segue.identifier ?? "") {
+        case "addPeopleDetail":
+            os_log("Adding a new meal.", log: OSLog.default, type: .debug)
+            
+        case "showPeopleDetail":
+            guard let selectedViewController = segue.destination as? Add_New_Person else {
+                fatalError("Unexpected Destination; \(segue.destination)")
+            }
+            
+            guard let selectedTableCell = sender as? PeopleTableViewCell else {
+                fatalError("Unexpected sender -- table cell \(sender)")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedTableCell) else {
+                fatalError("The selected cell is not in table")
+            }
+            let person = people[indexPath.row]
+            selectedViewController.nameTextField.text = person.value(forKeyPath: "name") as? String
+            selectedViewController.desgTextField.text = person.value(forKeyPath: "desg") as? String
+            selectedViewController.rateTextField.text = person.value(forKeyPath: "rate") as? String
+            
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+        }
     }
     
     

@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 class Add_New_Person: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -16,13 +17,16 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var desgTextField: UITextField!
     @IBOutlet weak var rateTextField: UITextField!
     
+    
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     var people: [NSManagedObject] = []
+    var detail: Person_Detail?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameTextField.delegate = self
+        
         
         updateSaveButtonState()
 
