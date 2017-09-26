@@ -107,8 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				4C7F407A1F7504A3004847DF /* PeopleTableViewCell.swift */,
-				4C7F40801F750710004847DF /* Add_New_Person.swift */,
 				4C71BF5A1F70FCB800C073EA /* PeopleScreen.swift */,
+				4C7F40801F750710004847DF /* Add_New_Person.swift */,
 			);
 			name = People;
 			sourceTree = "<group>";

@@ -31,8 +31,7 @@ class Add_New_Project: UIViewController, UITextFieldDelegate {
     //MARK : Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
+        super.prepare(for: segue, sender: sender)        
         
         // Configure the destination view controller only when the save button is pressed.
         guard let button = sender as? UIBarButtonItem, button === saveButton else {
@@ -72,13 +71,16 @@ class Add_New_Project: UIViewController, UITextFieldDelegate {
 
     @IBAction func actionCancelButtonPressed(_ sender: Any) {
         
-       if self.navigationController == nil {
+       /*if self.navigationController == nil {
             dismiss(animated: true, completion: nil)
         }
         
        else{
        self.navigationController?.popViewController(animated: true)
         }
+ */
+        //self.performSegue(withIdentifier: "unwindToMealList",sender: self)
+        
     }
     
 }

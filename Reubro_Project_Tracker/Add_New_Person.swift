@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class Add_New_Person: UIViewController {
 
