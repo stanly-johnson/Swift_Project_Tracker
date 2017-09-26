@@ -91,12 +91,13 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
     private func updateSaveButtonState(){
         
     let text = nameTextField.text ?? ""
-    let rate = rateTextField.text ?? ""
-    //print (!test.isEmpty)
-    saveButton.isEnabled = true
+        //print (!test.isEmpty)
+    saveButton.isEnabled = !text.isEmpty
     
     
     }
+    
+       
     
 
 }
