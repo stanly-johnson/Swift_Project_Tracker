@@ -7,23 +7,20 @@
 //
 
 import UIKit
+import CoreData
 import os.log
 
 class ProjectScreenTableViewController: UITableViewController {
     
     
+    @IBOutlet weak var buttonAddNewProject: UIBarButtonItem!
+    //var projects: [NSManagedObject] = []
+    let items = ["General","People","Sechdule","Cost","Status"]
     
-    var data : [String] = ["One","Two"]
-    var nameProject = String()
-    
-    
-    
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         title = "Projects"
-        
-        
-        print(nameProject)
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,17 +29,14 @@ class ProjectScreenTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-       
         return 1
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return data.count
-    }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -51,11 +45,12 @@ class ProjectScreenTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of ProjectTableViewCell.")
         }
         
-        let names = data[indexPath.row]
+        let names = items[indexPath.row]
         cell.nameLabel.text = names;
-
         return cell
     }
+    
+    
     
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -88,62 +83,44 @@ class ProjectScreenTableViewController: UITableViewController {
     }
     
     
+//     MARK: - Navigation
+//
+//     In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        super.prepare(for: segue, sender: sender)
+//        
+//        switch(segue.identifier ?? "") {
+//            
+//        case "AddItem":
+//            os_log("Adding a new meal.", log: OSLog.default, type: .debug)
+//            
+//            
+//        case "ShowItem":
+//            guard let Add_New_Project = segue.destination as? Add_New_Project else {
+//                fatalError("Unexpected destination: \(segue.destination)")
+//            }
+//            
+//            guard let selectedMealCell = sender as? ProjectTableViewCell else {
+//                fatalError("Unexpected sender: \(sender)")
+//            }
+//            
+//            guard let indexPath = tableView.indexPath(for: selectedMealCell) else {
+//                fatalError("The selected cell is not being displayed by the table")
+//            }
+//            
+//            let selectedMeal = data[indexPath.row]
+//            //destinationViewController.nameOfProject.text = selectedMeal
+//            
+//            
+//        default:
+//            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+//            
+//
+//
+//            }
     
-    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
-       
-      
-        //if let sourceViewController = sender.sourceViewController as? Add_New_Project, nameProject = sourceViewController.nameProject {
-        
-            let newIndexPath = IndexPath(row: data.count, section: 0)
-            data.append(nameProject)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
-        //}
 
-    }
-    
-
-    
-
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        switch(segue.identifier ?? "") {
-            
-        case "AddItem":
-            os_log("Adding a new meal.", log: OSLog.default, type: .debug)
-            
-            
-        case "ShowItem":
-            guard let Add_New_Project = segue.destination as? Add_New_Project else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            
-            guard let selectedMealCell = sender as? ProjectTableViewCell else {
-                fatalError("Unexpected sender: \(sender)")
-            }
-            
-            guard let indexPath = tableView.indexPath(for: selectedMealCell) else {
-                fatalError("The selected cell is not being displayed by the table")
-            }
-            
-            let selectedMeal = data[indexPath.row]
-            //destinationViewController.nameOfProject.text = selectedMeal
-            
-            
-        default:
-            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
-            
-
-
-            }
-        
-
-    }
+  //  }
     
 
 }

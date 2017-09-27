@@ -9,77 +9,145 @@
 import UIKit
 import os.log
 
-class Add_New_Project: UIViewController, UITextFieldDelegate {
+class Add_New_Project: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveButton: UIBarButtonItem!   
-    @IBOutlet weak var nameOfProject: UITextField!
     
     
-    override func viewDidLoad() {
+    let section_title = ["General","People","Sechdule","Cost","Status"]
+    let items = [["Project Name","Client Name"],["Person-One","Person-Two"], ["Start Date","End Date"], ["Est cost", "total cost"], ["completed","closed"]]
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        self.nameOfProject.delegate = self //setting the delegate with
-        updateSaveButtonState()
-        // Do any additional setup after loading the view.
+        title = "Projects"
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Ncell")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK : Navigation
+    // MARK: - Table view data source
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)        
+    func numberOfSections(in tableView: UITableView) -> Int {
         
-        // Configure the destination view controller only when the save button is pressed.
-        guard let button = sender as? UIBarButtonItem, button === saveButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-            return
-        }
+        return section_title.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let name = String(nameOfProject.text!)
-        if let destinationViewController = segue.destination as? ProjectScreenTableViewController{
-            
-            destinationViewController.nameProject = name!
-        }
+        return self.items[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.section_title[section]
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cellIdentifier = "AddNewProjectTableViewCell"
+        //guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ProjectTableViewCell  else {
+        // fatalError("The dequeued cell is not an instance of ProjectTableViewCell.")
+        //}
+        
+        //        let names = data[indexPath.row]
+        //        cell.nameLabel.text = names;
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        
+        // Configure the cell...
+        
+        cell.textLabel?.text = self.items[indexPath.section][indexPath.row]
+        
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        //data.remove(at: indexPath.row)
+        
+        /*
+         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+         
+         let managedObjectContext = appDelegate.persistentContainer.viewContext
+         let index = indexPath.row
+         
+         if editingStyle == .delete {
+         managedObjectContext.delete(people[indexPath.row])
+         people.remove(at: index)
+         
+         do {
+         try managedObjectContext.save()
+         self.tableView.reloadData()
+         
+         } catch let error as NSError {
+         print("Could not save. \(error), \(error.userInfo)")
+         }
+         } */
         
     }
     
     
+    //     MARK: - Navigation
+    //
+    //     In a storyboard-based application, you will often want to do a little preparation before navigation
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        super.prepare(for: segue, sender: sender)
+    //
+    //        switch(segue.identifier ?? "") {
+    //
+    //        case "AddItem":
+    //            os_log("Adding a new meal.", log: OSLog.default, type: .debug)
+    //
+    //
+    //        case "ShowItem":
+    //            guard let Add_New_Project = segue.destination as? Add_New_Project else {
+    //                fatalError("Unexpected destination: \(segue.destination)")
+    //            }
+    //
+    //            guard let selectedMealCell = sender as? ProjectTableViewCell else {
+    //                fatalError("Unexpected sender: \(sender)")
+    //            }
+    //
+    //            guard let indexPath = tableView.indexPath(for: selectedMealCell) else {
+    //                fatalError("The selected cell is not being displayed by the table")
+    //            }
+    //
+    //            let selectedMeal = data[indexPath.row]
+    //            //destinationViewController.nameOfProject.text = selectedMeal
+    //
+    //
+    //        default:
+    //            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+    //            
+    //
+    //
+    //            }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        updateSaveButtonState()
-        navigationItem.title = nameOfProject.text
-    }
     
-
+    //  }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        // Disable the Save button while editing.
-        saveButton.isEnabled = false
-    }
-    
-    private func updateSaveButtonState() {
-        // Disable the Save button if the text field is empty.
-        let text = nameOfProject.text ?? ""
-        print (!text.isEmpty)
-        saveButton.isEnabled = !text.isEmpty
-    }
     
 
     @IBAction func actionCancelButtonPressed(_ sender: Any) {
         
-       /*if self.navigationController == nil {
+       //if self.navigationController == nil {
             dismiss(animated: true, completion: nil)
-        }
+        //}
         
-       else{
-       self.navigationController?.popViewController(animated: true)
-        }
- */
+//       else{
+//       self.navigationController?.popViewController(animated: true)
+//        }
+
         //self.performSegue(withIdentifier: "unwindToMealList",sender: self)
         
     }
