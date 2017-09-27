@@ -113,29 +113,40 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
     
     func updateUserToDB(name:String, desg:String, rate:String){
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
         let searchName = incomingName
-        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "Person")
-        let predicate = NSPredicate(format: "name = '\(searchName)'")
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
+        
+        
+        
+        let predicate = NSPredicate(format:"name=\(searchName!)")
+        
+        
         fetchRequest.predicate = predicate
+        
         do{
-            let test = try context.fetch(fetchRequest) as? [NSManagedObject]
-            //if test!.count == 1
-            //{
-                let objectUpdate = NSEntityDescription.insertNewObject(forEntityName: "Person", into: context)
+            let test = try managedContext.fetch(fetchRequest) as? [NSManagedObject]
+            print(test)
+            if test!.count == 1
+            {
+                let objectUpdate = test![0]
                 objectUpdate.setValue(name, forKey: "name")
                 objectUpdate.setValue(desg, forKey: "desg")
                 objectUpdate.setValue(rate, forKey: "rate")
                 do{
-                    try context.save()
+                    try managedContext.save()
                     print("Data updated")
                 }
                 catch
                 {
                     print(error)
                 }
-            //}
+            }
             
         }
         catch
