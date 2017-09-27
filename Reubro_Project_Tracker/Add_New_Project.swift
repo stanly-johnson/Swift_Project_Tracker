@@ -10,8 +10,9 @@ import UIKit
 
 class Add_New_Project: UITableViewController {
     
-    let section_title = ["General","People","Sechdule","Cost","Status"]
-    let items = [["Project Name","Client Name"],["Person-One","Person-Two"], ["Start Date","End Date"], ["Est cost", "total cost"], ["completed","closed"]]
+    let section_title = ["General","People"]
+    //let section_title = ["General","People","Sechdule","Cost","Status"]
+    let items = [["Project Name","Client Name"],["Person-One","Person-Two"], ["Start Date","End Date","Hours"], ["Est cost", "total cost"], ["completed","closed"]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,8 @@ class Add_New_Project: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
 
     // MARK: - Table view data source
 
@@ -38,6 +41,10 @@ class Add_New_Project: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return self.items[section].count
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -56,7 +63,21 @@ class Add_New_Project: UITableViewController {
         return cell
     }
     
-
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 1
+        {
+            let header = tableView.dequeueReusableCell(withIdentifier: "People_Section_Header")! as! People_Section_Header
+            return header.contentView
+        }
+        
+        else
+        {
+            let header = tableView.dequeueReusableCell(withIdentifier: "General_Section_Header")! as! General_Section_Header
+            return header.contentView
+        }
+    }
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
