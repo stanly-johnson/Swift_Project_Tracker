@@ -2,154 +2,110 @@
 //  Add_New_Project.swift
 //  Reubro_Project_Tracker
 //
-//  Created by reubro on 19/09/17.
+//  Created by reubro on 27/09/17.
 //  Copyright © 2017 Reubro. All rights reserved.
 //
 
 import UIKit
-import os.log
 
-class Add_New_Project: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-    
-   
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var saveButton: UIBarButtonItem!   
-    
+class Add_New_Project: UITableViewController {
     
     let section_title = ["General","People","Sechdule","Cost","Status"]
     let items = [["Project Name","Client Name"],["Person-One","Person-Two"], ["Start Date","End Date"], ["Est cost", "total cost"], ["completed","closed"]]
-    override func viewDidLoad()
-    {
+
+    override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Projects"
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Ncell")
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     // MARK: - Table view data source
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return section_title.count
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
         return self.items[section].count
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.section_title[section]
     }
+
     
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellIdentifier = "AddNewProjectTableViewCell"
-        //guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ProjectTableViewCell  else {
-        // fatalError("The dequeued cell is not an instance of ProjectTableViewCell.")
-        //}
-        
-        //        let names = data[indexPath.row]
-        //        cell.nameLabel.text = names;
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        
-        // Configure the cell...
-        
+        let reuseIdentifier = "AddNewProject"
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         cell.textLabel?.text = self.items[indexPath.section][indexPath.row]
-        
+
+        // Configure the cell...
+
         return cell
     }
     
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
         return true
     }
+    */
+
+    /*
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
+    }
+    */
+
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+
+    }
+    */
+
+    /*
+    // Override to support conditional rearranging of the table view.
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the item to be re-orderable.
+        return true
+    }
+    */
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
-        //data.remove(at: indexPath.row)
-        
-        /*
-         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-         
-         let managedObjectContext = appDelegate.persistentContainer.viewContext
-         let index = indexPath.row
-         
-         if editingStyle == .delete {
-         managedObjectContext.delete(people[indexPath.row])
-         people.remove(at: index)
-         
-         do {
-         try managedObjectContext.save()
-         self.tableView.reloadData()
-         
-         } catch let error as NSError {
-         print("Could not save. \(error), \(error.userInfo)")
-         }
-         } */
-        
+    @IBAction func actionCancelButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     
-    //     MARK: - Navigation
-    //
-    //     In a storyboard-based application, you will often want to do a little preparation before navigation
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        super.prepare(for: segue, sender: sender)
-    //
-    //        switch(segue.identifier ?? "") {
-    //
-    //        case "AddItem":
-    //            os_log("Adding a new meal.", log: OSLog.default, type: .debug)
-    //
-    //
-    //        case "ShowItem":
-    //            guard let Add_New_Project = segue.destination as? Add_New_Project else {
-    //                fatalError("Unexpected destination: \(segue.destination)")
-    //            }
-    //
-    //            guard let selectedMealCell = sender as? ProjectTableViewCell else {
-    //                fatalError("Unexpected sender: \(sender)")
-    //            }
-    //
-    //            guard let indexPath = tableView.indexPath(for: selectedMealCell) else {
-    //                fatalError("The selected cell is not being displayed by the table")
-    //            }
-    //
-    //            let selectedMeal = data[indexPath.row]
-    //            //destinationViewController.nameOfProject.text = selectedMeal
-    //
-    //
-    //        default:
-    //            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
-    //            
-    //
-    //
-    //            }
-    
-    
-    //  }
-    
-    
 
-    @IBAction func actionCancelButtonPressed(_ sender: Any) {
-        
-       //if self.navigationController == nil {
-            dismiss(animated: true, completion: nil)
-        //}
-        
-//       else{
-//       self.navigationController?.popViewController(animated: true)
-//        }
-
-        //self.performSegue(withIdentifier: "unwindToMealList",sender: self)
-        
-    }
-    
 }

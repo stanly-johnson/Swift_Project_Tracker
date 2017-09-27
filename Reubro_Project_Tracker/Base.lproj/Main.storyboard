@@ -76,68 +76,6 @@
             </objects>
             <point key="canvasLocation" x="254" y="-505"/>
         </scene>
-        <!--Add New Project-->
-        <scene sceneID="UwF-5d-msH">
-            <objects>
-                <viewController id="lyL-z0-NGf" customClass="Add_New_Project" customModule="Reubro_Project_Tracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QUm-eM-u1X"/>
-                        <viewControllerLayoutGuide type="bottom" id="HCC-J6-rNi"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="VVC-Hw-w0D">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fIj-3m-8Id">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddNewProjectTableViewCell" rowHeight="50" id="2Kl-Ux-CKB" customClass="AddNewProjectTableViewCell" customModule="Reubro_Project_Tracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Kl-Ux-CKB" id="z3q-hK-6eE">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="lyL-z0-NGf" id="Q3E-aS-5Cv"/>
-                                    <outlet property="delegate" destination="lyL-z0-NGf" id="XQu-W4-eDG"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="fIj-3m-8Id" secondAttribute="bottom" id="AHq-AV-Jkd"/>
-                            <constraint firstItem="fIj-3m-8Id" firstAttribute="leading" secondItem="VVC-Hw-w0D" secondAttribute="leading" id="TjS-J3-447"/>
-                            <constraint firstItem="fIj-3m-8Id" firstAttribute="top" secondItem="QUm-eM-u1X" secondAttribute="bottom" id="ViP-ZX-39b"/>
-                            <constraint firstAttribute="trailing" secondItem="fIj-3m-8Id" secondAttribute="trailing" id="YEO-VY-pVt"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Add New Project" id="FUh-ug-HCD">
-                        <barButtonItem key="backBarButtonItem" title="Projects" id="c3g-J8-ZsT"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="zbD-8v-2eR">
-                            <connections>
-                                <action selector="actionCancelButtonPressed:" destination="lyL-z0-NGf" id="Gwt-Gx-OxA"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="hUZ-j3-sko">
-                            <connections>
-                                <segue destination="BTN-Og-Cgv" kind="unwind" unwindAction="unwindToMealListWithSender:" id="k7D-1p-3zx"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="saveButton" destination="hUZ-j3-sko" id="WP7-ZM-kva"/>
-                        <outlet property="tableView" destination="fIj-3m-8Id" id="FvS-cW-b1U"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dwG-w2-SxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="BTN-Og-Cgv" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="2050.7246376811595" y="1026.358695652174"/>
-        </scene>
         <!--People Screen-->
         <scene sceneID="w06-DK-IiX">
             <objects>
@@ -372,7 +310,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="EUd-zc-Ne9" id="HWD-cn-UgE"/>
-                                    <segue destination="lyL-z0-NGf" kind="show" identifier="ShowItem" id="9ce-1a-fwC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -384,7 +321,7 @@
                     <navigationItem key="navigationItem" id="5Yd-Ea-Oum">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="ySe-LH-JTD">
                             <connections>
-                                <segue destination="tlN-Xw-6TI" kind="presentation" identifier="AddItem" id="55S-kE-ULl"/>
+                                <segue destination="vsW-Sy-gwm" kind="presentation" id="Igo-0H-swP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -393,23 +330,41 @@
             </objects>
             <point key="canvasLocation" x="253" y="1027"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="l9U-fN-QdZ">
+        <!--Add Project-->
+        <scene sceneID="4oZ-0F-Tfb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tlN-Xw-6TI" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tao-Oj-dGb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="lyL-z0-NGf" kind="relationship" relationship="rootViewController" id="Ane-e6-cZd"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jyg-1K-k08" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="YoE-w6-emP" customClass="Add_New_Project" customModule="Reubro_Project_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gZY-S2-tW4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddNewProject" id="pxf-Le-cqf" customClass="AddNewProjectTableViewCell" customModule="Reubro_Project_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pxf-Le-cqf" id="iio-ht-lnh">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YoE-w6-emP" id="fqV-5Y-6RO"/>
+                            <outlet property="delegate" destination="YoE-w6-emP" id="9IY-3V-f2s"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add Project" id="YIr-l1-LxL">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DqD-rQ-uiW">
+                            <connections>
+                                <action selector="actionCancelButton:" destination="YoE-w6-emP" id="HWD-zg-Mfw"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="aOG-HH-Aqj"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GCD-y2-ydz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1138" y="1361"/>
+            <point key="canvasLocation" x="2372" y="1193"/>
         </scene>
         <!--Home-->
         <scene sceneID="f2O-s9-1vZ">
@@ -448,6 +403,24 @@
             </objects>
             <point key="canvasLocation" x="1309" y="540"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MiY-bN-56S">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vsW-Sy-gwm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="24v-N5-cCM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YoE-w6-emP" kind="relationship" relationship="rootViewController" id="jBL-86-fHV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1eB-x3-cOT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1216" y="1586"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icons8-Home-30.png" width="30" height="30"/>
@@ -455,7 +428,6 @@
         <image name="icons8-Project-30.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9ce-1a-fwC"/>
         <segue reference="aUu-rA-Hld"/>
     </inferredMetricsTieBreakers>
 </document>
