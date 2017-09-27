@@ -51,38 +51,25 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
     
 
     @IBAction func actionSaveButton(_ sender: Any) {
-        let nameToSave = nameTextField.text
-        let desgToSave = desgTextField.text
-        let rateToSave = rateTextField.text
+        let nameToSave:String = nameTextField.text!
+        let desgToSave:String = desgTextField.text!
+        let rateToSave:String = rateTextField.text!
         
-        //---saving to database ---//
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let entity =
-            NSEntityDescription.entity(forEntityName: "Person",
-                                       in: context)!
+        if(editMode){
+            updateUserToDB(name: nameToSave, desg: desgToSave, rate: rateToSave)
+        }
         
-        let person = NSManagedObject(entity: entity,
-                                     insertInto: context)
+        else{
+            addUserToDB(name: nameToSave, desg: desgToSave, rate: rateToSave)
+        }
         
-        person.setValue(nameToSave, forKeyPath: "name")
-        person.setValue(desgToSave, forKey: "desg")
-        person.setValue(rateToSave, forKeyPath: "rate")
-        
-        do
-        {
-            try context.save()
-            print("succesfully saved to database")
+        if(editMode){
+            self.navigationController?.popViewController(animated: true)
         }
             
-        catch let error as NSError {
-            print("Error!! Could not save. \(error), \(error.userInfo)")
+        else{
+            dismiss(animated: true, completion: nil)
         }
-        
-        //---end of saving to database --//
-        
-        dismiss(animated: true, completion: nil)
-
     }
     
     
@@ -102,8 +89,17 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func actionCancelButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        
+        if(editMode){
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        else{
+            dismiss(animated: true, completion: nil)
+        }
+        
     }
+    
     
     private func updateSaveButtonState(){
         
@@ -112,6 +108,71 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
     saveButton.isEnabled = !text.isEmpty
     
     
+    }
+    
+    
+    func updateUserToDB(name:String, desg:String, rate:String){
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let searchName = incomingName
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "Person")
+        let predicate = NSPredicate(format: "name = '\(searchName)'")
+        fetchRequest.predicate = predicate
+        do{
+            let test = try context.fetch(fetchRequest) as? [NSManagedObject]
+            //if test!.count == 1
+            //{
+                let objectUpdate = NSEntityDescription.insertNewObject(forEntityName: "Person", into: context)
+                objectUpdate.setValue(name, forKey: "name")
+                objectUpdate.setValue(desg, forKey: "desg")
+                objectUpdate.setValue(rate, forKey: "rate")
+                do{
+                    try context.save()
+                    print("Data updated")
+                }
+                catch
+                {
+                    print(error)
+                }
+            //}
+            
+        }
+        catch
+        {
+            print(error)
+        }
+        
+        
+    }
+    
+    
+    func addUserToDB(name:String, desg:String, rate:String){
+        
+        //---saving to database ---//
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity =
+            NSEntityDescription.entity(forEntityName: "Person",
+                                       in: context)!
+        
+        let person = NSManagedObject(entity: entity,
+                                     insertInto: context)
+        
+        person.setValue(name, forKeyPath: "name")
+        person.setValue(desg, forKey: "desg")
+        person.setValue(rate, forKeyPath: "rate")
+        
+        do
+        {
+            try context.save()
+            print("succesfully saved to database")
+        }
+            
+        catch let error as NSError {
+            print("Error!! Could not save. \(error), \(error.userInfo)")
+        }
+        //---end of saving to database --//
     }
     
        

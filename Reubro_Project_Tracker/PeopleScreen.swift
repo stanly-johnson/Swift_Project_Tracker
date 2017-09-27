@@ -96,11 +96,7 @@ class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource
         super.prepare(for: segue, sender: sender)
         switch (segue.identifier ?? "") {
         case "addPeopleDetail":
-            guard let selectedViewController = segue.destination as? Add_New_Person else {
-                fatalError("Unexpected Destination; \(segue.destination)")
-            }
-            selectedViewController.editMode = false
-            os_log("Adding a new meal.", log: OSLog.default, type: .debug)
+            os_log("Adding a new person", log: OSLog.default, type: .debug)
             
         case "showPeopleDetail":
             guard let selectedViewController = segue.destination as? Add_New_Person else {
