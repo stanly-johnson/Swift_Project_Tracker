@@ -10,7 +10,7 @@ import UIKit
 
 class Add_New_Project: UITableViewController {
     
-    let section_title = ["General","People"]
+    let section_title = ["General","People","Schedule"]
     //let section_title = ["General","People","Sechdule","Cost","Status"]
     let items = [["Project Name","Client Name"],["Person-One","Person-Two"], ["Start Date","End Date","Hours"], ["Est cost", "total cost"], ["completed","closed"]]
 
@@ -67,6 +67,12 @@ class Add_New_Project: UITableViewController {
         if section == 1
         {
             let header = tableView.dequeueReusableCell(withIdentifier: "People_Section_Header")! as! People_Section_Header
+            return header.contentView
+        }
+            
+        if section == 2
+        {
+            let header = tableView.dequeueReusableCell(withIdentifier: "Sechdule_Section_Header")! as! Sechdule_Section_Header
             return header.contentView
         }
         
