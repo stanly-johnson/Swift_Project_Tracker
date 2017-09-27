@@ -16,7 +16,10 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var desgTextField: UITextField!
     @IBOutlet weak var rateTextField: UITextField!
-    
+    var editMode : Bool = false
+    var incomingName : String?
+    var incomingRate : String?
+    var incomingDesg : String?
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
@@ -26,6 +29,15 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameTextField.delegate = self
+        
+        ///--code to prefill data if it is edit mode
+        if(editMode){
+            
+            nameTextField.text = incomingName
+            desgTextField.text = incomingDesg
+            rateTextField.text = incomingRate
+        }
+        ///--------
         
         
         updateSaveButtonState()

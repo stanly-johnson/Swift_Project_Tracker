@@ -18,7 +18,6 @@ class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = "People"
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "PScell") //people screen cell
     }
@@ -57,7 +56,7 @@ class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource
         }
         
         cell.peopleNameLabel.text = person.value(forKeyPath: "name") as? String
-        print(person.value(forKeyPath: "name") as? String)
+        //print(person.value(forKeyPath: "name") as? String)
         //cell.textLabel?.text = person.value(forKeyPath: "rate") as? String
         return cell
         
@@ -97,6 +96,10 @@ class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource
         super.prepare(for: segue, sender: sender)
         switch (segue.identifier ?? "") {
         case "addPeopleDetail":
+            guard let selectedViewController = segue.destination as? Add_New_Person else {
+                fatalError("Unexpected Destination; \(segue.destination)")
+            }
+            selectedViewController.editMode = false
             os_log("Adding a new meal.", log: OSLog.default, type: .debug)
             
         case "showPeopleDetail":
@@ -112,9 +115,10 @@ class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource
                 fatalError("The selected cell is not in table")
             }
             let person = people[indexPath.row]
-            selectedViewController.nameTextField.text = person.value(forKeyPath: "name") as? String
-            selectedViewController.desgTextField.text = person.value(forKeyPath: "desg") as? String
-            selectedViewController.rateTextField.text = person.value(forKeyPath: "rate") as? String
+            selectedViewController.editMode = true
+            selectedViewController.incomingName = person.value(forKeyPath: "name") as? String
+            selectedViewController.incomingDesg = person.value(forKeyPath: "desg") as? String
+            selectedViewController.incomingRate = person.value(forKeyPath: "rate") as? String
             
             
         default:
