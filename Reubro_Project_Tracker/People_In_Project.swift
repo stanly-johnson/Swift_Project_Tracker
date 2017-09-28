@@ -13,17 +13,22 @@ import os.log
 class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
   
    
+    @IBOutlet weak var hourPicker: UIPickerView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var personPicker: UIPickerView!
+    
     var pickerData: [String] = [String]()
     var person:[NSManagedObject] = []
     var fetch_count = 0
+    
+    let max_hours = 30 //change this value to change the max hours shown with picker view
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchFromDB()
         //personPicker.selectRow(3, inComponent: 0, animated: true)
+        
     }
 
     
@@ -53,19 +58,38 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        
-        if(fetch_count == 0)
+        if pickerView == personPicker
         {
-            actionPersonEmptyAlert()
+            if(fetch_count == 0)
+            {
+                actionPersonEmptyAlert()
+            }
+        
+            return fetch_count;
         }
         
-       return fetch_count;
+        else if pickerView == hourPicker
+        {
+            return 10
+        }
+        
+        return 0 //ideally this value is never returned
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        return pickerData[row]
+        if pickerView == personPicker
+        {
+            return pickerData[row]
+        }
         
+        else if pickerView == hourPicker
+        {
+            
+            return "\(row + 1)"
+        }
+        
+        return "" //ideally this value is never returned
     }
     
     // MARK: - Alert
