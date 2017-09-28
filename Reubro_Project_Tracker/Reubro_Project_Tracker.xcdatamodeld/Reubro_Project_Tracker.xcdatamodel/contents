@@ -5,14 +5,27 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rate" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="PersonAssigned" representedClassName="PersonAssigned" syncable="YES" codeGenerationType="class">
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="hours" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="module" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="name" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="persons" inverseEntity="Project" syncable="YES"/>
+        <relationship name="rate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" syncable="YES"/>
+    </entity>
     <entity name="Project" representedClassName="Project" syncable="YES" codeGenerationType="class">
+        <attribute name="closed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="hours" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="persons" optional="YES" toMany="YES" minCount="1" deletionRule="Deny" destinationEntity="PersonAssigned" inverseName="project" inverseEntity="PersonAssigned" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Person" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="Project" positionX="225" positionY="23" width="128" height="103"/>
+        <element name="Person" positionX="-74" positionY="146" width="128" height="88"/>
+        <element name="Project" positionX="414" positionY="153" width="128" height="148"/>
+        <element name="PersonAssigned" positionX="178" positionY="216" width="128" height="148"/>
     </elements>
 </model>

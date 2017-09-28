@@ -10,9 +10,10 @@ import UIKit
 import CoreData
 import os.log
 
-class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
   
    
+    @IBOutlet weak var moduleTextField: UITextField!
     @IBOutlet weak var hourPicker: UIPickerView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -22,12 +23,13 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var person:[NSManagedObject] = []
     var fetch_count = 0
     
-    let max_hours = 30 //change this value to change the max hours shown with picker view
+    let max_hours = 50 //change this value to change the max hours shown with picker view
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchFromDB()
         //personPicker.selectRow(3, inComponent: 0, animated: true)
+        self.moduleTextField.delegate = self
         
     }
 
@@ -70,7 +72,7 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         else if pickerView == hourPicker
         {
-            return 10
+            return max_hours
         }
         
         return 0 //ideally this value is never returned
@@ -143,6 +145,11 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         dismiss(animated: true, completion: nil)
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
 

@@ -143,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hde-wL-NsF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="253.62318840579712" y="203.80434782608697"/>
+            <point key="canvasLocation" x="254" y="183"/>
         </scene>
         <!--Add New Person-->
         <scene sceneID="0pW-Lw-kIQ">
@@ -224,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y7m-9U-FQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2319" y="204"/>
+            <point key="canvasLocation" x="2329" y="164"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="r6R-6L-4uD">
@@ -281,7 +281,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v3f-9h-QNQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-807" y="1027"/>
+            <point key="canvasLocation" x="-807" y="1026"/>
         </scene>
         <!--Project Screen Table View Controller-->
         <scene sceneID="sn8-Gh-T4O">
@@ -473,7 +473,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GCD-y2-ydz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2371.0144927536235" y="1192.663043478261"/>
+            <point key="canvasLocation" x="2126" y="1026"/>
         </scene>
         <!--Assign Person-->
         <scene sceneID="Qqk-bE-wqC">
@@ -600,13 +600,14 @@
                     <connections>
                         <outlet property="contentView" destination="96I-Xj-pcg" id="rMb-W7-bnW"/>
                         <outlet property="hourPicker" destination="mwh-00-1fO" id="wcx-0H-f4A"/>
+                        <outlet property="moduleTextField" destination="ML9-DZ-1ac" id="o6R-aV-ibK"/>
                         <outlet property="personPicker" destination="2u2-Xu-dpR" id="n65-7f-brz"/>
                         <outlet property="scrollView" destination="Gx5-XH-ab7" id="VaY-Uy-N61"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XoB-zF-2Ua" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4078.2608695652175" y="1192.663043478261"/>
+            <point key="canvasLocation" x="3878" y="1026"/>
         </scene>
         <!--Home-->
         <scene sceneID="f2O-s9-1vZ">
@@ -643,7 +644,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2G5-HK-fB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1309" y="540"/>
+            <point key="canvasLocation" x="1278" y="272"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MiY-bN-56S">
@@ -661,7 +662,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1eB-x3-cOT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1216" y="1586"/>
+            <point key="canvasLocation" x="1170" y="1163"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yx0-xt-gRs">
@@ -679,7 +680,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cmn-Py-7FI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3169.5652173913045" y="1192.663043478261"/>
+            <point key="canvasLocation" x="3014" y="1026"/>
         </scene>
     </scenes>
     <resources>
@@ -689,6 +690,6 @@
         <image name="icons8-Project-30.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aUu-rA-Hld"/>
+        <segue reference="ljU-Da-6ND"/>
     </inferredMetricsTieBreakers>
 </document>
