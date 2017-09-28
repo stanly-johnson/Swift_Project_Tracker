@@ -24,11 +24,13 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     var people: [NSManagedObject] = []
-    var detail: Person_Detail?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameTextField.delegate = self
+        self.rateTextField.delegate = self
+        self.desgTextField.delegate = self
         
         ///--code to prefill data if it is edit mode
         if(editMode){
@@ -72,21 +74,21 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         updateSaveButtonState()
         navigationItem.title = nameTextField.text
     }
     
-    
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disable the Save button while editing.
         saveButton.isEnabled = false
     }
-
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     
     @IBAction func actionCancelButton(_ sender: Any) {
         

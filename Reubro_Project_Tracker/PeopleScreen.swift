@@ -20,11 +20,12 @@ class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource
         super.viewDidLoad()
         title = "People"
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "PScell") //people screen cell
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
@@ -39,11 +40,13 @@ class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
+        
     }
 
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return people.count;
     }
     
@@ -56,8 +59,7 @@ class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource
         }
         
         cell.peopleNameLabel.text = person.value(forKeyPath: "name") as? String
-        //print(person.value(forKeyPath: "name") as? String)
-        //cell.textLabel?.text = person.value(forKeyPath: "rate") as? String
+        
         return cell
         
     }
@@ -121,6 +123,14 @@ class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }
     }
+    
+//    func printEmptymsg()
+//    {
+//        if people.count == 0
+//        {
+//            print("no data here, show msg")
+//        }
+//    }
     
     
     
