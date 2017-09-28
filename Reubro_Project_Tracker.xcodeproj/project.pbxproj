@@ -10,7 +10,6 @@
 		4C08D93C1F7257FC00A49B31 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08D93B1F7257FC00A49B31 /* ProjectTableViewCell.swift */; };
 		4C08D93E1F725BE700A49B31 /* ProjectScreenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08D93D1F725BE700A49B31 /* ProjectScreenTableViewController.swift */; };
 		4C08D9401F72807F00A49B31 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08D93F1F72807F00A49B31 /* HomeTableViewCell.swift */; };
-		4C6734C11F7A6FA000E257A4 /* Person_Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6734C01F7A6FA000E257A4 /* Person_Detail.swift */; };
 		4C71BF461F70FBEF00C073EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C71BF451F70FBEF00C073EA /* AppDelegate.swift */; };
 		4C71BF481F70FBEF00C073EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C71BF471F70FBEF00C073EA /* ViewController.swift */; };
 		4C71BF4B1F70FBF000C073EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C71BF491F70FBF000C073EA /* Main.storyboard */; };
@@ -39,7 +38,6 @@
 		4C08D93B1F7257FC00A49B31 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		4C08D93D1F725BE700A49B31 /* ProjectScreenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectScreenTableViewController.swift; path = ../ProjectScreenTableViewController.swift; sourceTree = "<group>"; };
 		4C08D93F1F72807F00A49B31 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
-		4C6734C01F7A6FA000E257A4 /* Person_Detail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person_Detail.swift; sourceTree = "<group>"; };
 		4C71BF421F70FBEF00C073EA /* Reubro_Project_Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reubro_Project_Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C71BF451F70FBEF00C073EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C71BF471F70FBEF00C073EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 		4C7F407D1F75058E004847DF /* People */ = {
 			isa = PBXGroup;
 			children = (
-				4C6734C01F7A6FA000E257A4 /* Person_Detail.swift */,
 				4C7F407A1F7504A3004847DF /* PeopleTableViewCell.swift */,
 				4C71BF5A1F70FCB800C073EA /* PeopleScreen.swift */,
 				4C7F40801F750710004847DF /* Add_New_Person.swift */,
@@ -263,7 +260,6 @@
 				4C08D93C1F7257FC00A49B31 /* ProjectTableViewCell.swift in Sources */,
 				4CDB71801F7CB55C0084BBE8 /* Status_Section_Header.swift in Sources */,
 				4C08D9401F72807F00A49B31 /* HomeTableViewCell.swift in Sources */,
-				4C6734C11F7A6FA000E257A4 /* Person_Detail.swift in Sources */,
 				4CE4A9821F7BCA8A00BFF85D /* People_Section_Header.swift in Sources */,
 				4CDB717E1F7CB4EA0084BBE8 /* Cost_Section_Header.swift in Sources */,
 				4C71BF5B1F70FCB800C073EA /* PeopleScreen.swift in Sources */,

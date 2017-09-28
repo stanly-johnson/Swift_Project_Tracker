@@ -96,7 +96,7 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     func actionPersonEmptyAlert()
     {
-        let alert = UIAlertController(title: "Warning", message: "You need to add atleast one person to continue. Add new person in the people tab", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Warning", message: "There are no people to assign projects. Add people from the people tab to continue.", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "OK", style: .destructive){ (action:UIAlertAction!) in
          self.dismiss(animated: true, completion: nil)
         }
