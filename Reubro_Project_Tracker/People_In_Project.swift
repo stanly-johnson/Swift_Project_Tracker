@@ -11,16 +11,33 @@ import CoreData
 import os.log
 
 class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+  
+   
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var personPicker: UIPickerView!
     var pickerData: [String] = [String]()
     var person:[NSManagedObject] = []
+    var fetch_count = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.personPicker.delegate = self
-        self.personPicker.dataSource = self
-       pickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
+        fetchFromDB()
+        //personPicker.selectRow(3, inComponent: 0, animated: true)
+    }
+
+    
+    override func viewDidLayoutSubviews()
+    {
+        let scrollViewBounds = scrollView.bounds
+        let containerViewBounds = contentView.bounds
+        var scrollViewInsets = UIEdgeInsets.zero
+        scrollViewInsets.top = scrollViewBounds.size.height/2.0;
+        scrollViewInsets.top -= contentView.bounds.size.height/2.0;
+        scrollViewInsets.bottom = scrollViewBounds.size.height/2.0
+        scrollViewInsets.bottom -= contentView.bounds.size.height/2.0;
+        scrollViewInsets.bottom += 1
+        scrollView.contentInset = scrollViewInsets
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,14 +52,66 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        
+        
+        if(fetch_count == 0)
+        {
+            actionPersonEmptyAlert()
+        }
+        
+       return fetch_count;
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
         return pickerData[row]
+        
     }
     
-
+    // MARK: - Alert
+    
+    func actionPersonEmptyAlert()
+    {
+        let alert = UIAlertController(title: "Warning", message: "You need to add atleast one person to continue. Add new person in the people tab", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .destructive){ (action:UIAlertAction!) in
+         self.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    //MARK: Database
+    
+    func fetchFromDB()
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest <NSFetchRequestResult>(entityName : "Person")
+        request.returnsObjectsAsFaults = false
+        
+        do
+        {
+            person = try context.fetch(request) as! [NSManagedObject]
+            if person.count > 0
+            {
+                for row in 0...person.count-1
+                {
+                let displayName = person[row]
+                let fetch_name = displayName.value(forKeyPath: "name") as? String
+                pickerData.append(fetch_name!)
+                }
+            }
+            
+        }
+        catch
+        {
+            print("Fetch operation failed")
+        }
+        
+        fetch_count = person.count
+        
+    }
     
     // MARK: - Navigation
     
