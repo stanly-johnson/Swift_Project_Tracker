@@ -10,8 +10,7 @@ import UIKit
 
 class Add_New_Project: UITableViewController {
     
-    let section_title = ["General","People","Schedule"]
-    //let section_title = ["General","People","Sechdule","Cost","Status"]
+    let section_title = ["General","People","Sechdule","Cost","Status"]
     let items = [["Project Name","Client Name"],["Person-One","Person-Two"], ["Start Date","End Date","Hours"], ["Est cost", "total cost"], ["completed","closed"]]
 
     override func viewDidLoad() {
@@ -57,9 +56,6 @@ class Add_New_Project: UITableViewController {
         let reuseIdentifier = "AddNewProject"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         cell.textLabel?.text = self.items[indexPath.section][indexPath.row]
-
-        // Configure the cell...
-
         return cell
     }
     
@@ -73,6 +69,18 @@ class Add_New_Project: UITableViewController {
         if section == 2
         {
             let header = tableView.dequeueReusableCell(withIdentifier: "Sechdule_Section_Header")! as! Sechdule_Section_Header
+            return header.contentView
+        }
+            
+        if section == 3
+        {
+            let header = tableView.dequeueReusableCell(withIdentifier: "Cost_Section_Header")! as! Cost_Section_Header
+            return header.contentView
+        }
+        
+        if section == 4
+        {
+            let header = tableView.dequeueReusableCell(withIdentifier: "Status_Section_Header")! as! Status_Section_Header
             return header.contentView
         }
         
