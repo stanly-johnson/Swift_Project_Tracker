@@ -4,7 +4,7 @@
 //
 //  Created by reubro on 22/09/17.
 //  Copyright © 2017 Reubro. All rights reserved.
-//
+//  Written by Stanly Johnson
 
 import UIKit
 import CoreData

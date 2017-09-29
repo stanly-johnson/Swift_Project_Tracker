@@ -9,7 +9,13 @@
 import UIKit
 
 class PersonCell: UITableViewCell {
+    
+    
+    @IBOutlet weak var nameLabel: UILabel!
 
+    @IBOutlet weak var costLabel: UILabel!
+    @IBOutlet weak var hourLabel: UILabel!
+    @IBOutlet weak var moduleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
