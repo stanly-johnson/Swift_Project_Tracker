@@ -1,18 +1,18 @@
 //
-//  AddNewProjectTableViewCell.swift
+//  StatusCell.swift
 //  Reubro_Project_Tracker
 //
-//  Created by reubro on 27/09/17.
+//  Created by reubro on 29/09/17.
 //  Copyright © 2017 Reubro. All rights reserved.
 //
 
 import UIKit
 
-class AddNewProjectTableViewCell: UITableViewCell {
+class StatusCell: UITableViewCell {
     
     
-    @IBOutlet weak var displayLabel: UILabel!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var completedSwitch: UISwitch!
+    @IBOutlet weak var closedSwitch: UISwitch!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

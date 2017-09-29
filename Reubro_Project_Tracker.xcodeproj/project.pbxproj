@@ -10,6 +10,8 @@
 		4C08D93C1F7257FC00A49B31 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08D93B1F7257FC00A49B31 /* ProjectTableViewCell.swift */; };
 		4C08D93E1F725BE700A49B31 /* ProjectScreenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08D93D1F725BE700A49B31 /* ProjectScreenTableViewController.swift */; };
 		4C08D9401F72807F00A49B31 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08D93F1F72807F00A49B31 /* HomeTableViewCell.swift */; };
+		4C6FD0E51F7E0508009A6C6B /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6FD0E41F7E0508009A6C6B /* StatusCell.swift */; };
+		4C6FD0E81F7E055B009A6C6B /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6FD0E71F7E055B009A6C6B /* PersonCell.swift */; };
 		4C71BF461F70FBEF00C073EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C71BF451F70FBEF00C073EA /* AppDelegate.swift */; };
 		4C71BF481F70FBEF00C073EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C71BF471F70FBEF00C073EA /* ViewController.swift */; };
 		4C71BF4B1F70FBF000C073EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C71BF491F70FBF000C073EA /* Main.storyboard */; };
@@ -38,6 +40,8 @@
 		4C08D93B1F7257FC00A49B31 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		4C08D93D1F725BE700A49B31 /* ProjectScreenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectScreenTableViewController.swift; path = ../ProjectScreenTableViewController.swift; sourceTree = "<group>"; };
 		4C08D93F1F72807F00A49B31 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		4C6FD0E41F7E0508009A6C6B /* StatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
+		4C6FD0E71F7E055B009A6C6B /* PersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		4C71BF421F70FBEF00C073EA /* Reubro_Project_Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reubro_Project_Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C71BF451F70FBEF00C073EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C71BF471F70FBEF00C073EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +79,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C6FD0E01F7E046C009A6C6B /* Project Tab */ = {
+			isa = PBXGroup;
+			children = (
+				4C08D93D1F725BE700A49B31 /* ProjectScreenTableViewController.swift */,
+				4C08D93B1F7257FC00A49B31 /* ProjectTableViewCell.swift */,
+			);
+			name = "Project Tab";
+			sourceTree = "<group>";
+		};
+		4C6FD0E21F7E048C009A6C6B /* Add New Project */ = {
+			isa = PBXGroup;
+			children = (
+				4CE4A97A1F7BBEC600BFF85D /* Table_Cells */,
+				4CE4A97B1F7BC08600BFF85D /* Add_New_Project.swift */,
+			);
+			name = "Add New Project";
+			sourceTree = "<group>";
+		};
+		4C6FD0E31F7E04C0009A6C6B /* Assign Person */ = {
+			isa = PBXGroup;
+			children = (
+				4C7F40821F750737004847DF /* People_In_Project.swift */,
+			);
+			name = "Assign Person";
+			sourceTree = "<group>";
+		};
+		4C6FD0E61F7E0529009A6C6B /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4C6FD0E41F7E0508009A6C6B /* StatusCell.swift */,
+				4C6FD0E71F7E055B009A6C6B /* PersonCell.swift */,
+				4CE4A9781F7BBA2A00BFF85D /* AddNewProjectTableViewCell.swift */,
+			);
+			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
 		4C71BF391F70FBEF00C073EA = {
 			isa = PBXGroup;
 			children = (
@@ -130,10 +170,9 @@
 		4C7F407E1F7505A4004847DF /* Project */ = {
 			isa = PBXGroup;
 			children = (
-				4CE4A97A1F7BBEC600BFF85D /* Table_Cells */,
-				4C08D93D1F725BE700A49B31 /* ProjectScreenTableViewController.swift */,
-				4CE4A97B1F7BC08600BFF85D /* Add_New_Project.swift */,
-				4C7F40821F750737004847DF /* People_In_Project.swift */,
+				4C6FD0E01F7E046C009A6C6B /* Project Tab */,
+				4C6FD0E21F7E048C009A6C6B /* Add New Project */,
+				4C6FD0E31F7E04C0009A6C6B /* Assign Person */,
 			);
 			name = Project;
 			sourceTree = "<group>";
@@ -153,9 +192,8 @@
 		4CE4A97A1F7BBEC600BFF85D /* Table_Cells */ = {
 			isa = PBXGroup;
 			children = (
+				4C6FD0E61F7E0529009A6C6B /* Custom Cells */,
 				4CE4A9851F7BCFFD00BFF85D /* Section Header */,
-				4CE4A9781F7BBA2A00BFF85D /* AddNewProjectTableViewCell.swift */,
-				4C08D93B1F7257FC00A49B31 /* ProjectTableViewCell.swift */,
 			);
 			name = Table_Cells;
 			sourceTree = "<group>";
@@ -252,9 +290,11 @@
 			files = (
 				4C71BF4E1F70FBF000C073EA /* Reubro_Project_Tracker.xcdatamodeld in Sources */,
 				4CE4A9871F7BD08100BFF85D /* Sechdule_Section_Header.swift in Sources */,
+				4C6FD0E81F7E055B009A6C6B /* PersonCell.swift in Sources */,
 				4C7F40811F750710004847DF /* Add_New_Person.swift in Sources */,
 				4C71BF481F70FBEF00C073EA /* ViewController.swift in Sources */,
 				4C7F407B1F7504A3004847DF /* PeopleTableViewCell.swift in Sources */,
+				4C6FD0E51F7E0508009A6C6B /* StatusCell.swift in Sources */,
 				4CE4A97C1F7BC08600BFF85D /* Add_New_Project.swift in Sources */,
 				4CE4A9791F7BBA2A00BFF85D /* AddNewProjectTableViewCell.swift in Sources */,
 				4C08D93C1F7257FC00A49B31 /* ProjectTableViewCell.swift in Sources */,

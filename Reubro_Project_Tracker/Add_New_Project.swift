@@ -11,7 +11,7 @@ import UIKit
 class Add_New_Project: UITableViewController {
     
     let section_title = ["General","People","Sechdule","Cost","Status"]
-    let items = [["Project Name","Client Name"],["Person-One","Person-Two"], ["Start Date","End Date","Hours"], ["Est cost", "total cost"], ["completed","closed"]]
+    let items = [["Project Name","Client Name"],["Person-One","Person-Two"], ["Start Date","End Date","Hours"], ["Est Cost", "Total Cost"], ["Completed/Closed"]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +53,36 @@ class Add_New_Project: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let reuseIdentifier = "AddNewProject"
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        cell.textLabel?.text = self.items[indexPath.section][indexPath.row]
-        return cell
+        if indexPath.section == 4
+        {
+            let reuseIdentifier = "StatusCell"
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? StatusCell  else {
+                fatalError("The dequeued cell is not an instance of AddNewProjectTableViewCell.")
+            }
+            
+            //have to add the code for switches
+            return cell
+        }
+            
+        else
+        {
+            let reuseIdentifier = "AddNewProject"
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? AddNewProjectTableViewCell  else {
+                fatalError("The dequeued cell is not an instance of AddNewProjectTableViewCell.")
+            }
+            
+            cell.displayLabel.text = items[indexPath.section][indexPath.row]
+            return cell
+        }
+        
+        
+        
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 1
