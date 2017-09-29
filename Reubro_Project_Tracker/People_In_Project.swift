@@ -107,14 +107,16 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     
-    //MARK: Database
+    //MARK: - Database
     
     func fetchFromDB()
     {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest <NSFetchRequestResult>(entityName : "Person")
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         request.returnsObjectsAsFaults = false
+        request.sortDescriptors = [sortDescriptor]
         
         do
         {

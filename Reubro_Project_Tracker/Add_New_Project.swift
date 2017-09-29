@@ -84,8 +84,20 @@ class Add_New_Project: UITableViewController {
             cell.nameLabel.text = test_names[indexPath.row]
             cell.moduleLabel.text = test_module[indexPath.row]
             cell.hourLabel.text = "\(test_hours[indexPath.row]) hrs"
-            cell.costLabel.text = "\(test_cost[indexPath.row]) rs"
+            cell.costLabel.text = "\(test_cost[indexPath.row]) Rs"
             //have to add the code for labels
+            return cell
+        }
+        
+        if indexPath.section == 2
+        {
+            let reuseIdentifier = "AddNewProject"
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? AddNewProjectTableViewCell  else {
+                fatalError("The dequeued cell is not an instance of AddNewProjectTableViewCell.")
+            }
+            
+            cell.displayLabel.text = items[indexPath.section][indexPath.row]
+            cell.textField.isUserInteractionEnabled = false
             return cell
         }
         

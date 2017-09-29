@@ -20,8 +20,6 @@ class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource
         super.viewDidLoad()
         title = "People"
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "PScell") //people screen cell
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +31,9 @@ class PeopleScreen: UIViewController, UITableViewDelegate, UITableViewDataSource
         let managedContext = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.returnsObjectsAsFaults = false
+        fetchRequest.sortDescriptors = [sortDescriptor]
         
         do {
             people = try managedContext.fetch(fetchRequest)

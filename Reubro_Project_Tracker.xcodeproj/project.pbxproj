@@ -12,6 +12,8 @@
 		4C08D9401F72807F00A49B31 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08D93F1F72807F00A49B31 /* HomeTableViewCell.swift */; };
 		4C6FD0E51F7E0508009A6C6B /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6FD0E41F7E0508009A6C6B /* StatusCell.swift */; };
 		4C6FD0E81F7E055B009A6C6B /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6FD0E71F7E055B009A6C6B /* PersonCell.swift */; };
+		4C6FD0ED1F7E1882009A6C6B /* ScheduleEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6FD0EC1F7E1882009A6C6B /* ScheduleEdit.swift */; };
+		4C6FD0EF1F7E1F59009A6C6B /* icons8-About-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C6FD0EE1F7E1F59009A6C6B /* icons8-About-30.png */; };
 		4C71BF461F70FBEF00C073EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C71BF451F70FBEF00C073EA /* AppDelegate.swift */; };
 		4C71BF481F70FBEF00C073EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C71BF471F70FBEF00C073EA /* ViewController.swift */; };
 		4C71BF4B1F70FBF000C073EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C71BF491F70FBF000C073EA /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 		4C08D93F1F72807F00A49B31 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		4C6FD0E41F7E0508009A6C6B /* StatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
 		4C6FD0E71F7E055B009A6C6B /* PersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
+		4C6FD0EC1F7E1882009A6C6B /* ScheduleEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleEdit.swift; sourceTree = "<group>"; };
+		4C6FD0EE1F7E1F59009A6C6B /* icons8-About-30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-About-30.png"; sourceTree = "<group>"; };
 		4C71BF421F70FBEF00C073EA /* Reubro_Project_Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reubro_Project_Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C71BF451F70FBEF00C073EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C71BF471F70FBEF00C073EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +119,14 @@
 			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
+		4C6FD0EB1F7E184A009A6C6B /* Sechdule */ = {
+			isa = PBXGroup;
+			children = (
+				4C6FD0EC1F7E1882009A6C6B /* ScheduleEdit.swift */,
+			);
+			name = Sechdule;
+			sourceTree = "<group>";
+		};
 		4C71BF391F70FBEF00C073EA = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +185,7 @@
 				4C6FD0E01F7E046C009A6C6B /* Project Tab */,
 				4C6FD0E21F7E048C009A6C6B /* Add New Project */,
 				4C6FD0E31F7E04C0009A6C6B /* Assign Person */,
+				4C6FD0EB1F7E184A009A6C6B /* Sechdule */,
 			);
 			name = Project;
 			sourceTree = "<group>";
@@ -180,6 +193,7 @@
 		4C7F407F1F75060B004847DF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4C6FD0EE1F7E1F59009A6C6B /* icons8-About-30.png */,
 				4CCE8D511F713E1100E2B3CD /* logo.png */,
 				4CCE8D551F7141D900E2B3CD /* icons8-People-30.png */,
 				4CE4A97F1F7BC9D100BFF85D /* icons8-Add User Male-30.png */,
@@ -271,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CCE8D521F713E1100E2B3CD /* logo.png in Resources */,
+				4C6FD0EF1F7E1F59009A6C6B /* icons8-About-30.png in Resources */,
 				4C71BF531F70FBF000C073EA /* LaunchScreen.storyboard in Resources */,
 				4CCE8D581F7141D900E2B3CD /* icons8-Project-30.png in Resources */,
 				4C71BF501F70FBF000C073EA /* Assets.xcassets in Resources */,
@@ -296,6 +311,7 @@
 				4C7F407B1F7504A3004847DF /* PeopleTableViewCell.swift in Sources */,
 				4C6FD0E51F7E0508009A6C6B /* StatusCell.swift in Sources */,
 				4CE4A97C1F7BC08600BFF85D /* Add_New_Project.swift in Sources */,
+				4C6FD0ED1F7E1882009A6C6B /* ScheduleEdit.swift in Sources */,
 				4CE4A9791F7BBA2A00BFF85D /* AddNewProjectTableViewCell.swift in Sources */,
 				4C08D93C1F7257FC00A49B31 /* ProjectTableViewCell.swift in Sources */,
 				4CDB71801F7CB55C0084BBE8 /* Status_Section_Header.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 
 class Sechdule_Section_Header: UITableViewCell {
 
+    @IBOutlet weak var editButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
