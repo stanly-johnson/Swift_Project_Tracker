@@ -383,7 +383,6 @@
                                             <state key="normal" image="icons8-Add User Male-30.png"/>
                                             <connections>
                                                 <action selector="actionAssignPerson:" destination="YoE-w6-emP" eventType="touchUpInside" id="0ef-28-dws"/>
-                                                <segue destination="rwt-5w-LxK" kind="presentation" identifier="assignPersonSegue" id="JXP-xk-HjV"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="People" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJv-R5-LlH">
@@ -590,6 +589,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="rwt-5w-LxK" kind="presentation" identifier="assignPersonSegue" id="d5L-hT-Lto"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GCD-y2-ydz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -721,7 +723,11 @@
                                 <action selector="actionCancelButton:" destination="2Pb-A4-6Cx" id="EeB-vu-vRd"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Xir-pU-N85"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Xir-pU-N85">
+                            <connections>
+                                <action selector="saveButton:" destination="2Pb-A4-6Cx" id="iTP-U4-Bj2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="96I-Xj-pcg" id="rMb-W7-bnW"/>
@@ -913,6 +919,6 @@
         <image name="icons8-Project-30.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ljU-Da-6ND"/>
+        <segue reference="aUu-rA-Hld"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -31,10 +31,14 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var endDate = String()
     var selectedHours = String()
     var selectedPerson = String()
+    var selectedProject = String()
+    var fetch_rate = String()
+    var cost = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchFromDB()
+        title = selectedProject
         //personPicker.selectRow(3, inComponent: 0, animated: true)
         self.moduleTextField.delegate = self
         self.hourPicker.delegate = self
@@ -154,6 +158,7 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 {
                 let displayName = person[row]
                 let fetch_name = displayName.value(forKeyPath: "name") as? String
+                fetch_rate = (displayName.value(forKeyPath: "rate") as? String)!
                 pickerData.append(fetch_name!)
                 }
             }
@@ -175,20 +180,25 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let entity =
-            NSEntityDescription.entity(forEntityName: "Project",
+            NSEntityDescription.entity(forEntityName: "PersonAssigned",
                                        in: context)!
         
-        let project = NSManagedObject(entity: entity,
+        let person = NSManagedObject(entity: entity,
                                       insertInto: context)
         
-        project.setValue(project_name, forKeyPath: "name")
-        project.setValue(client_name, forKey: "client")
-        
+        person.setValue(startDate, forKey: "startDate")
+        person.setValue(endDate, forKey: "endDate")
+        person.setValue(selectedHours, forKey: "hours")
+        person.setValue(moduleTextField.text, forKey: "module")
+        person.setValue(selectedPerson, forKey:"name")
+        //person.setValue(selectedProject, forKey: "project")
+        let calc = String(Int(selectedHours)! * Int(fetch_rate)!)
+        person.setValue(calc, forKey:"rate")
         
         do
         {
             try context.save()
-            print("succesfully added the project to database")
+            print("succesfully added the person to project")
         }
             
         catch let error as NSError {
@@ -218,16 +228,20 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
     }
     
-   
-    
-    
     // MARK: - Navigation
     
     @IBAction func actionCancelButton(_ sender: Any) {
-        
         dismiss(animated: true, completion: nil)
-        
     }
+    
+    
+    @IBAction func saveButton(_ sender: Any) {
+        insertIntoDB()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)

@@ -16,6 +16,7 @@ class ScheduleEdit: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var hourPicker: UIPickerView!
     @IBOutlet weak var endDatePicker: UIDatePicker!
+    var selectedProject = String()
     override func viewDidLoad() {
         super.viewDidLoad()
 

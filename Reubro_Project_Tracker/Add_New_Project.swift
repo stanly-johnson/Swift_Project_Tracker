@@ -13,18 +13,18 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     
     let section_title = ["General","People","Sechdule","Cost","Status"]
     let items = [["Project Name","Client Name"],["Person-One","Person-Two"], ["Start Date","End Date","Hours"], ["Est Cost"], ["Completed/Closed"]]
-    let person_count = 2
-    
+    var person_count = 0
+    var people_assigned:[NSManagedObject] = []
     var project_name = String()
     var client_name = String()
     
     //----code only for testing purposes
     
-    let test_names = ["Stanly","Oommen"]
-    let test_module = ["Design","Develop"]
-    let test_hours = ["5","8"]
-    let test_cost = ["2500","3000"]
-    
+//    let test_names = ["Stanly","Oommen"]
+//    let test_module = ["Design","Develop"]
+//    let test_hours = ["5","8"]
+//    let test_cost = ["2500","3000"]
+//    
     
     ////----uncomment only when necessary
     
@@ -38,6 +38,14 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchFromDB()
+        self.tableView.reloadData()
+        
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -58,6 +66,7 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         
         if section == 1
         {
+            fetchFromDB()
             return person_count
         }
         
@@ -86,10 +95,12 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
                 fatalError("The dequeued cell is not an instance of PersonCell.")
             }
             
-            cell.nameLabel.text = test_names[indexPath.row]
-            cell.moduleLabel.text = test_module[indexPath.row]
-            cell.hourLabel.text = "\(test_hours[indexPath.row]) hrs"
-            cell.costLabel.text = "\(test_cost[indexPath.row]) Rs"
+            fetchFromDB()
+            let displayName = people_assigned[indexPath.row]
+            cell.nameLabel.text = displayName.value(forKeyPath: "name") as? String
+            cell.moduleLabel.text = displayName.value(forKeyPath: "module") as? String
+            cell.hourLabel.text = "\(displayName.value(forKeyPath: "hours") as? String) hrs"
+            cell.costLabel.text = "\(displayName.value(forKeyPath: "rate") as? String) Rs"
             //have to add the code for labels
             return cell
         }
@@ -230,6 +241,38 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         //---end of saving to database --//
         
     }
+    
+    
+    func fetchFromDB()
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest <NSFetchRequestResult>(entityName : "PersonAssigned")
+        request.returnsObjectsAsFaults = false
+        
+        do
+        {
+            people_assigned = try context.fetch(request) as! [NSManagedObject]
+//            if people_assigned.count > 0
+//            {
+//                for row in 0...people_assigned.count-1
+//                {
+//                    let displayName = people_assigned[row]
+//                    let fetch_name = displayName.value(forKeyPath: "name") as? String
+//                    fetch_rate = (displayName.value(forKeyPath: "rate") as? String)!
+//                    pickerData.append(fetch_name!)
+//                }
+//            }
+            
+        }
+        catch
+        {
+            print("Fetch operation failed")
+        }
+        
+        person_count = people_assigned.count
+        
+    }
 
  
     // MARK: - Navigation
@@ -278,6 +321,31 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             performSegue(withIdentifier: "scheduleSegue", sender: sender)
         }
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        switch (segue.identifier ?? "") {
+        case "assignPersonSegue":
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let selectedViewController = destinationNavigationController.topViewController as! People_In_Project
+            selectedViewController.selectedProject = project_name
+            
+        case "scheduleSegue":
+            guard let selectedViewController = segue.destination as? ScheduleEdit else {
+            fatalError("Unexpected Destination; \(segue.destination)")
+        }
+        
+        selectedViewController.selectedProject = project_name
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+        }
+    }
+
+
+    
     
     // MARK: - Alerts
     
