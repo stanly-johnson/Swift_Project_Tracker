@@ -120,8 +120,6 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             selectedPerson = pickerData[count]
             
         }
-        
-    
     }
     
     
@@ -190,7 +188,7 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         person.setValue(endDate, forKey: "endDate")
         person.setValue(selectedHours, forKey: "hours")
         person.setValue(moduleTextField.text, forKey: "module")
-        person.setValue(selectedPerson, forKey:"name")
+        //person.setValue(selectedPerson, forKey:"name")
         //person.setValue(selectedProject, forKey: "project")
         let calc = String(Int(selectedHours)! * Int(fetch_rate)!)
         person.setValue(calc, forKey:"rate")
@@ -239,9 +237,6 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         insertIntoDB()
         dismiss(animated: true, completion: nil)
     }
-    
-    
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)

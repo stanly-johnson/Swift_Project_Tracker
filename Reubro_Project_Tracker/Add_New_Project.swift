@@ -17,7 +17,7 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     var people_assigned:[NSManagedObject] = []
     var project_name = String()
     var client_name = String()
-    
+    var total_cost : Int = 0
     //----code only for testing purposes
     
 //    let test_names = ["Stanly","Oommen"]
@@ -42,6 +42,7 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchFromDB()
+        total_cost = 0
         self.tableView.reloadData()
         
     }
@@ -99,8 +100,11 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             let displayName = people_assigned[indexPath.row]
             cell.nameLabel.text = displayName.value(forKeyPath: "name") as? String
             cell.moduleLabel.text = displayName.value(forKeyPath: "module") as? String
-            cell.hourLabel.text = "\(displayName.value(forKeyPath: "hours") as? String) hrs"
-            cell.costLabel.text = "\(displayName.value(forKeyPath: "rate") as? String) Rs"
+            let hour_label_text = (displayName.value(forKeyPath: "hours") as? String)!
+            cell.hourLabel.text = "\(hour_label_text) hrs"
+            let cost_label_text = (displayName.value(forKeyPath: "rate") as? String)!
+            total_cost = total_cost + Int(cost_label_text)!
+             cell.costLabel.text = "\(cost_label_text) Rs"
             //have to add the code for labels
             return cell
         }
@@ -206,6 +210,8 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         let clientCell = (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? Any) as? AddNewProjectTableViewCell
         client_name = (clientCell?.textField.text)!
         print("client-name is \(client_name)")
+        let costCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 3)) as? Any) as? AddNewProjectTableViewCell
+        costCell?.textField.text = String(total_cost)
 
         
     }
