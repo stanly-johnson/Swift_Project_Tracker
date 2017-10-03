@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class Add_New_Project: UITableViewController {
+class Add_New_Project: UITableViewController, UITextFieldDelegate {
     
     let section_title = ["General","People","Sechdule","Cost","Status"]
     let items = [["Project Name","Client Name"],["Person-One","Person-Two"], ["Start Date","End Date","Hours"], ["Est Cost"], ["Completed/Closed"]]
@@ -134,11 +134,6 @@ class Add_New_Project: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      
-        
-        
-        
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -191,41 +186,19 @@ class Add_New_Project: UITableViewController {
         }
     }
     
+  
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let nameCell = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? Any) as? AddNewProjectTableViewCell
+        project_name = (nameCell?.textField.text)!
+        print("project-name is \(project_name)")
+        let clientCell = (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? Any) as? AddNewProjectTableViewCell
+        client_name = (clientCell?.textField.text)!
+        print("client-name is \(client_name)")
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+    
     
     //MARK: - Database
     
@@ -258,15 +231,8 @@ class Add_New_Project: UITableViewController {
         
     }
 
-    /*
+ 
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     @IBAction func actionCancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -275,19 +241,57 @@ class Add_New_Project: UITableViewController {
     
     @IBAction func actionSaveButton(_ sender: Any) {
         
-        let nameCell = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? Any) as? AddNewProjectTableViewCell
-        project_name = (nameCell?.textField.text)!
-        print("project-name is \(project_name)")
+        if project_name.isEmpty
+        {
+            emptyProjectName()
+        }
         
-        let clientCell = (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? Any) as? AddNewProjectTableViewCell
-        client_name = (clientCell?.textField.text)!
-        print("client-name is \(client_name)")
-        
-        insertToDB()
-        
+        else
+        {
+            insertToDB()
+        }
+    }
+    
+ 
+    @IBAction func actionAssignPerson(_ sender: Any) {
+        if project_name.isEmpty
+        {
+            emptyProjectName()
+        }
+            
+        else
+        {
+            performSegue(withIdentifier: "assignPersonSegue", sender: sender)
+        }
     }
     
     
+    @IBAction func actionAddSchedule(_ sender: Any) {
+        
+        if project_name.isEmpty
+        {
+            emptyProjectName()
+        }
+            
+        else
+        {
+            performSegue(withIdentifier: "scheduleSegue", sender: sender)
+        }
+    }
+    
+    // MARK: - Alerts
+    
+    func emptyProjectName()
+    {
+        let alert = UIAlertController(title: "Warning", message: "Project name cannot be left blank", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .destructive){ (action:UIAlertAction!) in
+            //self.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+  
     
 
 }

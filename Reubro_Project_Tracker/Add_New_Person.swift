@@ -81,7 +81,7 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        // Disable the Save button while editing.
+        
         saveButton.isEnabled = false
     }
     

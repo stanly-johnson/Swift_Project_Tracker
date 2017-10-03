@@ -86,8 +86,8 @@
 		4C6FD0E01F7E046C009A6C6B /* Project Tab */ = {
 			isa = PBXGroup;
 			children = (
-				4C08D93D1F725BE700A49B31 /* ProjectScreenTableViewController.swift */,
 				4C08D93B1F7257FC00A49B31 /* ProjectTableViewCell.swift */,
+				4C08D93D1F725BE700A49B31 /* ProjectScreenTableViewController.swift */,
 			);
 			name = "Project Tab";
 			sourceTree = "<group>";

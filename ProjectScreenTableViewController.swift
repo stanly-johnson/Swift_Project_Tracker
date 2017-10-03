@@ -14,13 +14,34 @@ class ProjectScreenTableViewController: UITableViewController {
     
     
     @IBOutlet weak var buttonAddNewProject: UIBarButtonItem!
-    //var projects: [NSManagedObject] = []
-    let items = ["General","People","Sechdule","Cost","Status"]
+    var projects: [NSManagedObject] = []
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         title = "Projects"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Project")
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.returnsObjectsAsFaults = false
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        do {
+            projects = try managedContext.fetch(fetchRequest)
+            self.tableView.reloadData()
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,7 +52,7 @@ class ProjectScreenTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return projects.count
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,13 +61,14 @@ class ProjectScreenTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let project = projects[indexPath.row]
         let cellIdentifier = "ProjectTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ProjectTableViewCell  else {
             fatalError("The dequeued cell is not an instance of ProjectTableViewCell.")
         }
         
-        let names = items[indexPath.row]
-        cell.nameLabel.text = names;
+        cell.nameLabel.text = project.value(forKeyPath: "name") as? String
+        
         return cell
     }
     
@@ -59,28 +81,28 @@ class ProjectScreenTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        //data.remove(at: indexPath.row)
-        
-        /*
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let managedObjectContext = appDelegate.persistentContainer.viewContext
         let index = indexPath.row
         
         if editingStyle == .delete {
-            managedObjectContext.delete(people[indexPath.row])
-            people.remove(at: index)
+            managedObjectContext.delete(projects[indexPath.row])
+            projects.remove(at: index)
             
             do {
                 try managedObjectContext.save()
                 self.tableView.reloadData()
                 
-            } catch let error as NSError {
+            }
+                
+            catch let error as NSError {
                 print("Could not save. \(error), \(error.userInfo)")
             }
-        } */
+        }
         
     }
+
     
     
 //     MARK: - Navigation

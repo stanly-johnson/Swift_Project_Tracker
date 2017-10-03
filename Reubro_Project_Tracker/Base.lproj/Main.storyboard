@@ -352,6 +352,9 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="YoE-w6-emP" id="7kG-Zl-s3c"/>
+                                            </connections>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxc-Sa-0hf">
                                             <rect key="frame" x="8" y="12" width="189" height="21"/>
@@ -379,7 +382,8 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="icons8-Add User Male-30.png"/>
                                             <connections>
-                                                <segue destination="rwt-5w-LxK" kind="presentation" id="JXP-xk-HjV"/>
+                                                <action selector="actionAssignPerson:" destination="YoE-w6-emP" eventType="touchUpInside" id="0ef-28-dws"/>
+                                                <segue destination="rwt-5w-LxK" kind="presentation" identifier="assignPersonSegue" id="JXP-xk-HjV"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="People" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJv-R5-LlH">
@@ -436,7 +440,8 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Edit"/>
                                             <connections>
-                                                <segue destination="M65-KZ-ImE" kind="presentation" id="MEE-oY-sdi"/>
+                                                <action selector="actionAddSchedule:" destination="YoE-w6-emP" eventType="touchUpInside" id="ows-W8-86P"/>
+                                                <segue destination="M65-KZ-ImE" kind="presentation" identifier="scheduleSegue" id="MEE-oY-sdi"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -657,6 +662,9 @@
                                                 <date key="date" timeIntervalSinceReferenceDate="528285010.29834503">
                                                     <!--2017-09-28 09:50:10 +0000-->
                                                 </date>
+                                                <connections>
+                                                    <action selector="actionStartDate:" destination="2Pb-A4-6Cx" eventType="valueChanged" id="fOr-pw-rxQ"/>
+                                                </connections>
                                             </datePicker>
                                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="s2c-19-0nf">
                                                 <rect key="frame" x="55" y="383" width="328" height="124"/>
@@ -664,6 +672,9 @@
                                                 <date key="date" timeIntervalSinceReferenceDate="528285010.29834503">
                                                     <!--2017-09-28 09:50:10 +0000-->
                                                 </date>
+                                                <connections>
+                                                    <action selector="actionEndDate:" destination="2Pb-A4-6Cx" eventType="valueChanged" id="Ggi-uJ-xza"/>
+                                                </connections>
                                             </datePicker>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to enter " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ML9-DZ-1ac">
                                                 <rect key="frame" x="208" y="541" width="175" height="30"/>
@@ -714,10 +725,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="96I-Xj-pcg" id="rMb-W7-bnW"/>
+                        <outlet property="endDatePicker" destination="s2c-19-0nf" id="m4A-lY-ZuX"/>
                         <outlet property="hourPicker" destination="mwh-00-1fO" id="wcx-0H-f4A"/>
                         <outlet property="moduleTextField" destination="ML9-DZ-1ac" id="o6R-aV-ibK"/>
                         <outlet property="personPicker" destination="2u2-Xu-dpR" id="n65-7f-brz"/>
                         <outlet property="scrollView" destination="Gx5-XH-ab7" id="VaY-Uy-N61"/>
+                        <outlet property="startDatePicker" destination="QuH-J8-Kvd" id="vwM-kM-ZPm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XoB-zF-2Ua" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -19,17 +19,25 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var personPicker: UIPickerView!
     
+    @IBOutlet weak var endDatePicker: UIDatePicker!
+    @IBOutlet weak var startDatePicker: UIDatePicker!
+    
     var pickerData: [String] = [String]()
     var person:[NSManagedObject] = []
     var fetch_count = 0
     
     let max_hours = 50 //change this value to change the max hours shown with picker view
+    var startDate = String()
+    var endDate = String()
+    var selectedHours = String()
+    var selectedPerson = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchFromDB()
         //personPicker.selectRow(3, inComponent: 0, animated: true)
         self.moduleTextField.delegate = self
+        self.hourPicker.delegate = self
         
     }
 
@@ -94,6 +102,25 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         return "" //ideally this value is never returned
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        if pickerView == hourPicker
+        {
+            selectedHours = String(pickerView.selectedRow(inComponent: 0) + 1)
+
+        }
+        
+        if pickerView == personPicker
+        {
+            let count  = pickerView.selectedRow(inComponent: 0)
+            selectedPerson = pickerData[count]
+            
+        }
+        
+    
+    }
+    
+    
     // MARK: - Alert
     
     func actionPersonEmptyAlert()
@@ -140,6 +167,59 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         fetch_count = person.count
         
     }
+    
+    
+    func insertIntoDB()
+    {
+        //---saving to database ---//
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity =
+            NSEntityDescription.entity(forEntityName: "Project",
+                                       in: context)!
+        
+        let project = NSManagedObject(entity: entity,
+                                      insertInto: context)
+        
+        project.setValue(project_name, forKeyPath: "name")
+        project.setValue(client_name, forKey: "client")
+        
+        
+        do
+        {
+            try context.save()
+            print("succesfully added the project to database")
+        }
+            
+        catch let error as NSError {
+            print("Error!! Could not save. \(error), \(error.userInfo)")
+        }
+        //---end of saving to database --//
+    }
+    
+    
+    
+    // MARK: - DatePicker
+    
+    @IBAction func actionStartDate(_ sender: Any) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        startDate = dateFormatter.string(from: startDatePicker.date)
+        print ("Start Date set to \(startDate)")
+        
+    }
+  
+    
+    @IBAction func actionEndDate(_ sender: Any) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        endDate = dateFormatter.string(from: endDatePicker.date)
+        print ("End Date set to \(endDate)")
+        
+    }
+    
+   
+    
     
     // MARK: - Navigation
     
