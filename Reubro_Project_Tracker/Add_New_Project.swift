@@ -7,12 +7,16 @@
 //  Written by Stanly Johnson
 
 import UIKit
+import CoreData
 
 class Add_New_Project: UITableViewController {
     
     let section_title = ["General","People","Sechdule","Cost","Status"]
-    let items = [["Project Name","Client Name"],["Person-One","Person-Two"], ["Start Date","End Date","Hours"], ["Est Cost", "Total Cost"], ["Completed/Closed"]]
+    let items = [["Project Name","Client Name"],["Person-One","Person-Two"], ["Start Date","End Date","Hours"], ["Est Cost"], ["Completed/Closed"]]
     let person_count = 2
+    
+    var project_name = String()
+    var client_name = String()
     
     //----code only for testing purposes
     
@@ -20,6 +24,7 @@ class Add_New_Project: UITableViewController {
     let test_module = ["Design","Develop"]
     let test_hours = ["5","8"]
     let test_cost = ["2500","3000"]
+    
     
     ////----uncomment only when necessary
     
@@ -129,6 +134,10 @@ class Add_New_Project: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      
+        
+        
+        
         
     }
     
@@ -217,6 +226,37 @@ class Add_New_Project: UITableViewController {
         return true
     }
     */
+    
+    //MARK: - Database
+    
+    func insertToDB()
+    {
+        //---saving to database ---//
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity =
+            NSEntityDescription.entity(forEntityName: "Project",
+                                       in: context)!
+        
+        let project = NSManagedObject(entity: entity,
+                                     insertInto: context)
+        
+          project.setValue(project_name, forKeyPath: "name")
+          project.setValue(client_name, forKey: "client")
+
+        
+        do
+        {
+            try context.save()
+            print("succesfully added the project to database")
+        }
+            
+        catch let error as NSError {
+            print("Error!! Could not save. \(error), \(error.userInfo)")
+        }
+        //---end of saving to database --//
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -231,6 +271,22 @@ class Add_New_Project: UITableViewController {
     @IBAction func actionCancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    @IBAction func actionSaveButton(_ sender: Any) {
+        
+        let nameCell = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? Any) as? AddNewProjectTableViewCell
+        project_name = (nameCell?.textField.text)!
+        print("project-name is \(project_name)")
+        
+        let clientCell = (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? Any) as? AddNewProjectTableViewCell
+        client_name = (clientCell?.textField.text)!
+        print("client-name is \(client_name)")
+        
+        insertToDB()
+        
+    }
+    
     
     
 

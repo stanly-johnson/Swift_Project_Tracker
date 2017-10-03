@@ -15,9 +15,11 @@
         <relationship name="rate" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Person" syncable="YES"/>
     </entity>
     <entity name="Project" representedClassName="Project" syncable="YES" codeGenerationType="class">
+        <attribute name="client" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="closed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="estCost" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hours" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -26,6 +28,6 @@
     <elements>
         <element name="Person" positionX="-74" positionY="146" width="128" height="88"/>
         <element name="PersonAssigned" positionX="178" positionY="216" width="128" height="148"/>
-        <element name="Project" positionX="414" positionY="153" width="128" height="148"/>
+        <element name="Project" positionX="414" positionY="153" width="128" height="180"/>
     </elements>
 </model>
