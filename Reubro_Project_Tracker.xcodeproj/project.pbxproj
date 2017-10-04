@@ -444,7 +444,7 @@
 		4C71BF581F70FBF000C073EA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				DEVELOPMENT_TEAM = DQTX7SGDK4;
 				INFOPLIST_FILE = Reubro_Project_Tracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -458,7 +458,7 @@
 		4C71BF591F70FBF000C073EA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				DEVELOPMENT_TEAM = DQTX7SGDK4;
 				INFOPLIST_FILE = Reubro_Project_Tracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

@@ -329,7 +329,8 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     }
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
         
         super.prepare(for: segue, sender: sender)
         switch (segue.identifier ?? "") {
@@ -339,11 +340,9 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             selectedViewController.selectedProject = project_name
             
         case "scheduleSegue":
-            guard let selectedViewController = segue.destination as? ScheduleEdit else {
-            fatalError("Unexpected Destination; \(segue.destination)")
-        }
-        
-        selectedViewController.selectedProject = project_name
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let selectedViewController = destinationNavigationController.topViewController as! ScheduleEdit
+            selectedViewController.selectedProject = project_name
             
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
