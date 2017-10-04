@@ -15,9 +15,13 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     let items = [["Project Name","Client Name"],["Person-One","Person-Two"], ["Start Date","End Date","Hours"], ["Est Cost"], ["Completed/Closed"]]
     var person_count = 0
     var people_assigned:[NSManagedObject] = []
+    
     var project_name = String()
     var client_name = String()
     var total_cost : Int = 0
+    var start_date = String()
+    var end_date = String()
+    var hours_project = String()
     //----code only for testing purposes
     
 //    let test_names = ["Stanly","Oommen"]
@@ -42,7 +46,8 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchFromDB()
-        total_cost = 0
+        //total_cost = 0
+        refresh()
         self.tableView.reloadData()
         
     }
@@ -204,15 +209,35 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
   
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let nameCell = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? Any) as? AddNewProjectTableViewCell
+        
+        let nameCell = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as Any) as? AddNewProjectTableViewCell
         project_name = (nameCell?.textField.text)!
         print("project-name is \(project_name)")
-        let clientCell = (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? Any) as? AddNewProjectTableViewCell
+        
+        let clientCell = (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as Any) as? AddNewProjectTableViewCell
         client_name = (clientCell?.textField.text)!
         print("client-name is \(client_name)")
-        let costCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 3)) as? Any) as? AddNewProjectTableViewCell
+        
+        refresh()
+    }
+    
+    
+    func refresh(){
+        
+        let costCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 3)) as Any) as? AddNewProjectTableViewCell
         costCell?.textField.text = String(total_cost)
-
+        
+        let startDateCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 2)) as Any) as? AddNewProjectTableViewCell
+        startDateCell?.textField.text = start_date
+        print(start_date)
+        
+        let endDateCell = (tableView.cellForRow(at: IndexPath(row: 1 , section: 2)) as Any) as? AddNewProjectTableViewCell
+        endDateCell?.textField.text = end_date
+        print(end_date)
+        
+        let hoursProjectCell = (tableView.cellForRow(at: IndexPath(row: 2 , section: 2)) as Any) as? AddNewProjectTableViewCell
+        hoursProjectCell?.textField.text = hours_project
+        print(hours_project)
         
     }
     

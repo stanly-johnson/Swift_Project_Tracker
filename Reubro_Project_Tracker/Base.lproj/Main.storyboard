@@ -837,6 +837,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="528285010.29834503">
                                     <!--2017-09-28 09:50:10 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="endDate:" destination="QPI-c1-l8v" eventType="valueChanged" id="Rii-zx-nty"/>
+                                </connections>
                             </datePicker>
                             <pickerView contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1aM-9P-7fU">
                                 <rect key="frame" x="250" y="516" width="76" height="85"/>
@@ -852,6 +855,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="528285010.29834503">
                                     <!--2017-09-28 09:50:10 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="startDate:" destination="QPI-c1-l8v" eventType="valueChanged" id="yYg-LC-yXb"/>
+                                </connections>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -862,13 +868,17 @@
                                 <action selector="actionCancel:" destination="QPI-c1-l8v" id="LPf-Eb-A0v"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ae2-Og-1hh"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ae2-Og-1hh">
+                            <connections>
+                                <action selector="actionSaveButton:" destination="QPI-c1-l8v" id="Gph-7E-nbq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="endDatePicker" destination="mOD-Hb-BOZ" id="sHG-O3-U6q"/>
                         <outlet property="hourPicker" destination="1aM-9P-7fU" id="dHW-p0-fDf"/>
                         <outlet property="saveButton" destination="ae2-Og-1hh" id="9fe-Ld-tgC"/>
-                        <outlet property="startDatePicker" destination="flQ-dM-jEa" id="qGZ-rL-ISy"/>
+                        <outlet property="startDatePicker" destination="X4y-pG-g4x" id="NLd-eC-lTX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fRd-bg-2aH" userLabel="First Responder" sceneMemberID="firstResponder"/>
