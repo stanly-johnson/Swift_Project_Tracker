@@ -20,6 +20,7 @@ class ScheduleEdit: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     var selectedHours = String()
     var startDate = String()
     var endDate = String()
+    //var newProject = projectDetails()
     
     
     override func viewDidLoad() {
@@ -80,11 +81,9 @@ class ScheduleEdit: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     
     @IBAction func actionSaveButton(_ sender: Any) {
         
-        if let presenter = presentingViewController as? Add_New_Project {
-            presenter.start_date = startDate
-            presenter.end_date = endDate
-            presenter.hours_project = selectedHours
-        }
+        newProject.time.start_date = startDate
+        newProject.time.end_date = endDate
+        newProject.time.hours_project = selectedHours
         dismiss(animated: true, completion: nil)
         
     }

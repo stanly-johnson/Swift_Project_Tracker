@@ -16,46 +16,27 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     var person_count = 0
     var people_assigned:[NSManagedObject] = []
     
-    var project_name = String()
-    var client_name = String()
-    var total_cost : Int = 0
-    var start_date = String()
-    var end_date = String()
-    var hours_project = String()
-    //----code only for testing purposes
-    
-//    let test_names = ["Stanly","Oommen"]
-//    let test_module = ["Design","Develop"]
-//    let test_hours = ["5","8"]
-//    let test_cost = ["2500","3000"]
-//    
-    
-    ////----uncomment only when necessary
+    //var newProject = projectDetails()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchFromDB()
-        //total_cost = 0
         refresh()
         self.tableView.reloadData()
+        print("printing start date \(newProject.time.start_date)")
         
     }
     
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+       
     }
     
     
@@ -63,13 +44,11 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return section_title.count
+       return section_title.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        
+              
         if section == 1
         {
             fetchFromDB()
@@ -95,6 +74,7 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 1
+        // people section - shows the person,module,hours and cost
         {
             let reuseIdentifier = "PersonCell"
             guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? PersonCell  else {
@@ -108,8 +88,8 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             let hour_label_text = (displayName.value(forKeyPath: "hours") as? String)!
             cell.hourLabel.text = "\(hour_label_text) hrs"
             let cost_label_text = (displayName.value(forKeyPath: "rate") as? String)!
-            total_cost = total_cost + Int(cost_label_text)!
-             cell.costLabel.text = "\(cost_label_text) Rs"
+            //total_cost = total_cost + Int(cost_label_text)!
+            cell.costLabel.text = "\(cost_label_text) Rs"
             //have to add the code for labels
             return cell
         }
@@ -211,34 +191,29 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         let nameCell = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as Any) as? AddNewProjectTableViewCell
-        project_name = (nameCell?.textField.text)!
-        print("project-name is \(project_name)")
+        newProject.projectName = (nameCell?.textField.text)!
+        print("project-name is \(newProject.projectName)")
         
         let clientCell = (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as Any) as? AddNewProjectTableViewCell
-        client_name = (clientCell?.textField.text)!
-        print("client-name is \(client_name)")
+        newProject.clientName = (clientCell?.textField.text)!
+        print("client-name is \(newProject.clientName)")
         
-        refresh()
     }
     
     
     func refresh(){
         
-        let costCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 3)) as Any) as? AddNewProjectTableViewCell
-        costCell?.textField.text = String(total_cost)
+//      let costCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 3)) as Any) as? AddNewProjectTableViewCell
+//      costCell?.textField.text = String(total_cost)
         
         let startDateCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 2)) as Any) as? AddNewProjectTableViewCell
-        startDateCell?.textField.text = start_date
-        print(start_date)
+        startDateCell?.textField.text = newProject.time.start_date
         
         let endDateCell = (tableView.cellForRow(at: IndexPath(row: 1 , section: 2)) as Any) as? AddNewProjectTableViewCell
-        endDateCell?.textField.text = end_date
-        print(end_date)
+        endDateCell?.textField.text = newProject.time.end_date
         
         let hoursProjectCell = (tableView.cellForRow(at: IndexPath(row: 2 , section: 2)) as Any) as? AddNewProjectTableViewCell
-        hoursProjectCell?.textField.text = hours_project
-        print(hours_project)
-        
+        hoursProjectCell?.textField.text = newProject.time.hours_project
     }
     
     
@@ -256,8 +231,13 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         let project = NSManagedObject(entity: entity,
                                      insertInto: context)
         
-          project.setValue(project_name, forKeyPath: "name")
-          project.setValue(client_name, forKey: "client")
+          project.setValue(newProject.projectName, forKeyPath: "name")
+          project.setValue(newProject.clientName, forKey: "client")
+          project.setValue(newProject.time.start_date, forKey: "startDate")
+          project.setValue(newProject.time.end_date, forKey: "endDate")
+          project.setValue(newProject.time.hours_project, forKey: "hours")
+          project.setValue(newProject.closed, forKey: "closed")
+          project.setValue(newProject.completed, forKey: "completed")
 
         
         do
@@ -274,7 +254,8 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     }
     
     
-    func fetchFromDB()
+    func fetchFromDB() //fetching from person assigned
+        //soon to be replaced
     {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -315,7 +296,7 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     
     @IBAction func actionSaveButton(_ sender: Any) {
         
-        if project_name.isEmpty
+        if newProject.projectName.isEmpty
         {
             emptyProjectName()
         }
@@ -328,7 +309,7 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     
  
     @IBAction func actionAssignPerson(_ sender: Any) {
-        if project_name.isEmpty
+        if newProject.projectName.isEmpty
         {
             emptyProjectName()
         }
@@ -342,7 +323,7 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     
     @IBAction func actionAddSchedule(_ sender: Any) {
         
-        if project_name.isEmpty
+        if newProject.projectName.isEmpty
         {
             emptyProjectName()
         }
@@ -362,12 +343,12 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         case "assignPersonSegue":
             let destinationNavigationController = segue.destination as! UINavigationController
             let selectedViewController = destinationNavigationController.topViewController as! People_In_Project
-            selectedViewController.selectedProject = project_name
+            selectedViewController.selectedProject = newProject.projectName
             
         case "scheduleSegue":
             let destinationNavigationController = segue.destination as! UINavigationController
             let selectedViewController = destinationNavigationController.topViewController as! ScheduleEdit
-            selectedViewController.selectedProject = project_name
+            selectedViewController.selectedProject = newProject.projectName
             
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
