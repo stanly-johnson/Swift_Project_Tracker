@@ -16,6 +16,7 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     var person_count = 0
     var people_assigned:[NSManagedObject] = []
     var editMode : Bool = false
+    var total_cost : Int = 0
     
     //var newProject = projectDetails()
     
@@ -46,8 +47,12 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchFromDB()
-        refresh()
         self.tableView.reloadData()
+        if(editMode)
+        {
+            refresh()
+        }
+        
     }
     
 
@@ -105,10 +110,9 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             cell.moduleLabel.text = displayName.value(forKeyPath: "module") as? String
             let hour_label_text = (displayName.value(forKeyPath: "hours") as? String)!
             cell.hourLabel.text = "\(hour_label_text) hrs"
-            //let cost_label_text = (displayName.value(forKeyPath: "rate") as? String)!
-            //total_cost = total_cost + Int(cost_label_text)!
-            //cell.costLabel.text = "\(cost_label_text) Rs"
-            //have to add the code for labels
+            let cost_label_text = (displayName.value(forKeyPath: "rate") as? String)!
+            cell.costLabel.text = "\(cost_label_text) Rs"
+           
             return cell
         }
         
@@ -254,8 +258,9 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     
     func refresh(){
         
-//      let costCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 3)) as Any) as? AddNewProjectTableViewCell
-//      costCell?.textField.text = String(total_cost)
+        calc_total_cost()
+        let costCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 3)) as Any) as? AddNewProjectTableViewCell
+        costCell?.textField.text = String(total_cost)
         
         let startDateCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 2)) as Any) as? AddNewProjectTableViewCell
         startDateCell?.textField.text = newProject.time.start_date
@@ -266,30 +271,7 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         let hoursProjectCell = (tableView.cellForRow(at: IndexPath(row: 2 , section: 2)) as Any) as? AddNewProjectTableViewCell
         hoursProjectCell?.textField.text = newProject.time.hours_project
         
-        let statusCell = (tableView.cellForRow(at: IndexPath(row: 0, section : 4)) as Any ) as? StatusCell
-        let completed_switch = statusCell?.completedSwitch
-            if (completed_switch?.isOn)!
-            {
-                newProject.completed = true
-            }
-        
-            else
-            {
-                newProject.completed = false
-            }
-        
-        
-        let closed_switch = statusCell?.closedSwitch
-            if (closed_switch?.isOn)!
-            {
-                newProject.closed = true
-            }
-                
-            else
-            {
-                newProject.closed = false
-            }
-      
+       
         
     }
     
@@ -352,9 +334,6 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         //soon to be replaced
     {
         
-        if(editMode)
-        {
-        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest <NSFetchRequestResult>(entityName : "PersonAssigned")
@@ -366,8 +345,7 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             if people_assigned.count > 0
             {
                 //nothing much to do here
-            }
-            
+            }            
             
         }
         catch
@@ -375,10 +353,24 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             print("Fetch operation failed")
         }
             
-        }
+        
         person_count = people_assigned.count
         
     }
+    
+    func calc_total_cost()
+    {
+        total_cost = 0
+        fetchFromDB()
+        for row in 0...person_count-1
+        {
+                let displayName = people_assigned[row]
+                let cost_label_text = (displayName.value(forKeyPath: "rate") as? String)!
+                total_cost = total_cost + Int(cost_label_text)!
+        }
+        
+    }
+    
 
  
     // MARK: - Navigation

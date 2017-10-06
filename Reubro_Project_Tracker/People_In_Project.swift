@@ -190,9 +190,8 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         person.setValue(moduleTextField.text, forKey: "module")
         person.setValue(selectedPerson, forKey:"personName")
         person.setValue(selectedProject, forKey: "projectName")
-        //person.setValue(selectedProject, forKey: "project")
-        //let calc = String(Int(selectedHours)! * Int(fetch_rate)!)
-        //person.setValue(calc, forKey:"rate")
+        let calc = String(Int(selectedHours)! * Int(fetch_rate)!)
+        person.setValue(calc, forKey:"rate")
         
         do
         {
