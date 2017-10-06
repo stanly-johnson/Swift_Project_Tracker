@@ -183,9 +183,6 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             cell.displayLabel.text = items[indexPath.section][indexPath.row]
             return cell
         }
-        
-        
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -270,9 +267,6 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         
         let hoursProjectCell = (tableView.cellForRow(at: IndexPath(row: 2 , section: 2)) as Any) as? AddNewProjectTableViewCell
         hoursProjectCell?.textField.text = newProject.time.hours_project
-        
-       
-        
     }
     
     

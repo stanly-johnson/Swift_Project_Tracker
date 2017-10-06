@@ -58,7 +58,7 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
         let rateToSave:String = rateTextField.text!
         
         if(editMode){
-            //updateUserToDB(name: nameToSave, desg: desgToSave, rate: rateToSave)
+            updateUserToDB(name: nameToSave, desg: desgToSave, rate: rateToSave)
         }
         
         else{
@@ -123,17 +123,10 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
         let managedContext = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
-        
-        
-        
-        let predicate = NSPredicate(format:"name=\(searchName!)")
-        
-        
-        fetchRequest.predicate = predicate
+        fetchRequest.predicate = NSPredicate(format : "name contains[c] %@", searchName!)
         
         do{
             let test = try managedContext.fetch(fetchRequest) as? [NSManagedObject]
-            print(test)
             if test!.count == 1
             {
                 let objectUpdate = test![0]
