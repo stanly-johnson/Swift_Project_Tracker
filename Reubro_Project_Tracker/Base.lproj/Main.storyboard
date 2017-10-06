@@ -310,6 +310,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="EUd-zc-Ne9" id="HWD-cn-UgE"/>
+                                    <segue destination="YoE-w6-emP" kind="show" identifier="ShowProjectDetail" id="k2t-AU-WTb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -321,7 +322,7 @@
                     <navigationItem key="navigationItem" id="5Yd-Ea-Oum">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="ySe-LH-JTD">
                             <connections>
-                                <segue destination="vsW-Sy-gwm" kind="presentation" id="Igo-0H-swP"/>
+                                <segue destination="vsW-Sy-gwm" kind="presentation" identifier="NewProjectSegue" id="Igo-0H-swP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -930,5 +931,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="aUu-rA-Hld"/>
+        <segue reference="k2t-AU-WTb"/>
     </inferredMetricsTieBreakers>
 </document>

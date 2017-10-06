@@ -15,12 +15,31 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     let items = [["Project Name","Client Name"],["Person-One","Person-Two"], ["Start Date","End Date","Hours"], ["Est Cost"], ["Completed/Closed"]]
     var person_count = 0
     var people_assigned:[NSManagedObject] = []
+    var editMode : Bool = false
     
     //var newProject = projectDetails()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if(editMode)
+        {
+            fillvalues()
+        }
+        
+        else
+        {
+            newProject.projectName = ""
+            newProject.clientName = ""
+            newProject.time.end_date = ""
+            newProject.time.start_date = ""
+            newProject.time.hours_project = ""
+            newProject.est_cost = ""
+            newProject.closed = false
+            newProject.completed = false
+        }
+        
         
     }
     
@@ -243,6 +262,57 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     }
     
     
+    func fillvalues(){
+        
+        //      let costCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 3)) as Any) as? AddNewProjectTableViewCell
+        //      costCell?.textField.text = String(total_cost)
+        
+        let projectNameCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 0)) as Any) as? AddNewProjectTableViewCell
+        print(newProject.projectName)
+        projectNameCell?.textField.text = newProject.projectName
+        
+        let clientNameCell = (tableView.cellForRow(at: IndexPath(row: 1 , section: 0)) as Any) as? AddNewProjectTableViewCell
+        print(newProject.clientName)
+        clientNameCell?.textField.text = newProject.clientName
+        
+        let startDateCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 2)) as Any) as? AddNewProjectTableViewCell
+        startDateCell?.textField.text = newProject.time.start_date
+        
+        let endDateCell = (tableView.cellForRow(at: IndexPath(row: 1 , section: 2)) as Any) as? AddNewProjectTableViewCell
+        endDateCell?.textField.text = newProject.time.end_date
+        
+        let hoursProjectCell = (tableView.cellForRow(at: IndexPath(row: 2 , section: 2)) as Any) as? AddNewProjectTableViewCell
+        hoursProjectCell?.textField.text = newProject.time.hours_project
+        
+        let statusCell = (tableView.cellForRow(at: IndexPath(row: 0, section : 4)) as Any ) as? StatusCell
+        let completed_switch = statusCell?.completedSwitch
+        if (newProject.completed)
+        {
+            completed_switch?.setOn(true, animated: false)
+        }
+            
+        else
+        {
+            completed_switch?.setOn(false, animated: false)
+        }
+        
+        
+        let closed_switch = statusCell?.closedSwitch
+        if (newProject.closed)
+        {
+            closed_switch?.setOn(true, animated: false)
+        }
+            
+        else
+        {
+            closed_switch?.setOn(false, animated: false)
+        }
+        
+        
+    }
+    
+    
+    
     //MARK: - Database
     
     func insertToDB()
@@ -315,7 +385,16 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     // MARK: - Navigation
     
     @IBAction func actionCancelButton(_ sender: Any) {
+        
+        if(editMode)
+        {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        else
+        {
         dismiss(animated: true, completion: nil)
+        }
     }
     
     
@@ -332,7 +411,15 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             insertToDB()
         }
         
-        dismiss(animated: true, completion: nil)
+        if(editMode)
+        {
+            self.navigationController?.popViewController(animated: true)
+        }
+            
+        else
+        {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
  

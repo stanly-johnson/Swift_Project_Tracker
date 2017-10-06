@@ -105,44 +105,46 @@ class ProjectScreenTableViewController: UITableViewController {
 
     
     
-//     MARK: - Navigation
-//
-//     In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        super.prepare(for: segue, sender: sender)
-//        
-//        switch(segue.identifier ?? "") {
-//            
-//        case "AddItem":
-//            os_log("Adding a new meal.", log: OSLog.default, type: .debug)
-//            
-//            
-//        case "ShowItem":
-//            guard let Add_New_Project = segue.destination as? Add_New_Project else {
-//                fatalError("Unexpected destination: \(segue.destination)")
-//            }
-//            
-//            guard let selectedMealCell = sender as? ProjectTableViewCell else {
-//                fatalError("Unexpected sender: \(sender)")
-//            }
-//            
-//            guard let indexPath = tableView.indexPath(for: selectedMealCell) else {
-//                fatalError("The selected cell is not being displayed by the table")
-//            }
-//            
-//            let selectedMeal = data[indexPath.row]
-//            //destinationViewController.nameOfProject.text = selectedMeal
-//            
-//            
-//        default:
-//            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
-//            
-//
-//
-//            }
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        switch(segue.identifier ?? "") {
+            
+        case "NewProjectSegue":
+            os_log("Adding a new project", log: OSLog.default, type: .debug)
+            
+            
+        case "ShowProjectDetail":
+            guard let selectedViewController = segue.destination as? Add_New_Project else {
+                fatalError("Unexpected Destination; \(segue.destination)")
+            }
+            
+            guard let selectedTableCell = sender as? ProjectTableViewCell else {
+                fatalError("Unexpected sender -- table cell \(sender)")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedTableCell) else {
+                fatalError("The selected cell is not in table")
+            }
+            let project = projects[indexPath.row]
+            selectedViewController.editMode = true
+            newProject.projectName = (project.value(forKeyPath: "name") as? String)!
+            newProject.clientName = (project.value(forKeyPath: "client") as? String)!
+            newProject.time.start_date = (project.value(forKeyPath: "startDate") as? String)!
+            newProject.time.end_date = (project.value(forKeyPath: "endDate") as? String)!
+            newProject.time.hours_project = (project.value(forKeyPath: "hours") as? String)!
+            newProject.closed = (project.value(forKeyPath: "closed") as? Bool)!
+            newProject.completed = (project.value(forKeyPath: "completed") as? Bool)!
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+            
+
+
+            }
     
 
-  //  }
+    }
     
 
 }
