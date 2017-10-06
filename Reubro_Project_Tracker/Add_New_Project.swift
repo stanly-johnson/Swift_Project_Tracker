@@ -214,6 +214,32 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         
         let hoursProjectCell = (tableView.cellForRow(at: IndexPath(row: 2 , section: 2)) as Any) as? AddNewProjectTableViewCell
         hoursProjectCell?.textField.text = newProject.time.hours_project
+        
+        let statusCell = (tableView.cellForRow(at: IndexPath(row: 0, section : 4)) as Any ) as? StatusCell
+        let completed_switch = statusCell?.completedSwitch
+            if (completed_switch?.isOn)!
+            {
+                newProject.completed = true
+            }
+        
+            else
+            {
+                newProject.completed = false
+            }
+        
+        
+        let closed_switch = statusCell?.closedSwitch
+            if (closed_switch?.isOn)!
+            {
+                newProject.closed = true
+            }
+                
+            else
+            {
+                newProject.closed = false
+            }
+      
+        
     }
     
     
@@ -238,12 +264,11 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
           project.setValue(newProject.time.hours_project, forKey: "hours")
           project.setValue(newProject.closed, forKey: "closed")
           project.setValue(newProject.completed, forKey: "completed")
-
-        
+                
         do
         {
             try context.save()
-            print("succesfully added the project to database")
+            print("Succesfully added the project to database")
         }
             
         catch let error as NSError {
@@ -296,6 +321,7 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     
     @IBAction func actionSaveButton(_ sender: Any) {
         
+        refresh()
         if newProject.projectName.isEmpty
         {
             emptyProjectName()
@@ -305,6 +331,8 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         {
             insertToDB()
         }
+        
+        dismiss(animated: true, completion: nil)
     }
     
  
