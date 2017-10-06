@@ -125,6 +125,29 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             return cell
         }
         
+        if indexPath.section == 0
+        {
+            let reuseIdentifier = "AddNewProject"
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? AddNewProjectTableViewCell  else {
+                fatalError("The dequeued cell is not an instance of AddNewProjectTableViewCell.")
+            }
+            
+            cell.displayLabel.text = items[indexPath.section][indexPath.row]
+            
+            if  (indexPath.row == 0)
+            {
+            cell.textField.text = newProject.projectName
+            }
+            
+            if  (indexPath.row == 1)
+            {
+                cell.textField.text = newProject.clientName
+            }
+            
+            
+            return cell
+        }
+        
         if indexPath.section == 4
         {
             let reuseIdentifier = "StatusCell"
@@ -132,7 +155,17 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
                 fatalError("The dequeued cell is not an instance of StatusCell.")
             }
             
-            //have to add the code for switches
+            if (newProject.completed)
+            {
+                cell.completedSwitch.setOn(true, animated: true)
+            }
+            
+            if (newProject.closed)
+            {
+                cell.closedSwitch.setOn(true, animated: true)
+            }
+            
+            
             return cell
         }
             
@@ -264,16 +297,8 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     
     func fillvalues(){
         
-        //      let costCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 3)) as Any) as? AddNewProjectTableViewCell
-        //      costCell?.textField.text = String(total_cost)
-        
-        let projectNameCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 0)) as Any) as? AddNewProjectTableViewCell
-        print(newProject.projectName)
-        projectNameCell?.textField.text = newProject.projectName
-        
-        let clientNameCell = (tableView.cellForRow(at: IndexPath(row: 1 , section: 0)) as Any) as? AddNewProjectTableViewCell
-        print(newProject.clientName)
-        clientNameCell?.textField.text = newProject.clientName
+        //rest of the data is being filled from the cellForRowAt method
+        //lousy coding -- but will have to do for now
         
         let startDateCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 2)) as Any) as? AddNewProjectTableViewCell
         startDateCell?.textField.text = newProject.time.start_date
@@ -283,31 +308,6 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         
         let hoursProjectCell = (tableView.cellForRow(at: IndexPath(row: 2 , section: 2)) as Any) as? AddNewProjectTableViewCell
         hoursProjectCell?.textField.text = newProject.time.hours_project
-        
-        let statusCell = (tableView.cellForRow(at: IndexPath(row: 0, section : 4)) as Any ) as? StatusCell
-        let completed_switch = statusCell?.completedSwitch
-        if (newProject.completed)
-        {
-            completed_switch?.setOn(true, animated: false)
-        }
-            
-        else
-        {
-            completed_switch?.setOn(false, animated: false)
-        }
-        
-        
-        let closed_switch = statusCell?.closedSwitch
-        if (newProject.closed)
-        {
-            closed_switch?.setOn(true, animated: false)
-        }
-            
-        else
-        {
-            closed_switch?.setOn(false, animated: false)
-        }
-        
         
     }
     
