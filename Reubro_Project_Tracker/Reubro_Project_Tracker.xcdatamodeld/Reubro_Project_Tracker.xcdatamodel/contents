@@ -9,10 +9,10 @@
         <attribute name="endDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hours" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="module" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="personName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="projectName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="name" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" syncable="YES"/>
-        <relationship name="project" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Project" inverseName="persons" inverseEntity="Project" syncable="YES"/>
     </entity>
     <entity name="Project" representedClassName="Project" syncable="YES" codeGenerationType="class">
         <attribute name="client" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,11 +23,10 @@
         <attribute name="hours" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="persons" optional="YES" toMany="YES" minCount="1" deletionRule="Deny" destinationEntity="PersonAssigned" inverseName="project" inverseEntity="PersonAssigned" syncable="YES"/>
     </entity>
     <elements>
         <element name="Person" positionX="-74" positionY="146" width="128" height="88"/>
         <element name="PersonAssigned" positionX="178" positionY="216" width="128" height="150"/>
-        <element name="Project" positionX="414" positionY="153" width="128" height="180"/>
+        <element name="Project" positionX="414" positionY="153" width="128" height="165"/>
     </elements>
 </model>

@@ -180,22 +180,16 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let entity =
             NSEntityDescription.entity(forEntityName: "PersonAssigned",
                                        in: context)!
-        let entityemployee =
-            NSEntityDescription.entity(forEntityName: "Person",
-                                       in: context)!
-        
-        let employee = NSManagedObject(entity: entityemployee, insertInto: context)
-        
         let person = NSManagedObject(entity: entity,
                                       insertInto: context)
         
-        employee.setValue(selectedPerson, forKey:"name")
         
         person.setValue(startDate, forKey: "startDate")
         person.setValue(endDate, forKey: "endDate")
         person.setValue(selectedHours, forKey: "hours")
         person.setValue(moduleTextField.text, forKey: "module")
-        person.setValue(NSSet(object: employee), forKey:"name")
+        person.setValue(selectedPerson, forKey:"personName")
+        person.setValue(selectedProject, forKey: "projectName")
         //person.setValue(selectedProject, forKey: "project")
         //let calc = String(Int(selectedHours)! * Int(fetch_rate)!)
         //person.setValue(calc, forKey:"rate")

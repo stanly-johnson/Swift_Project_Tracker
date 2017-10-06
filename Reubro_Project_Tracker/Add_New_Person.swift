@@ -58,7 +58,7 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
         let rateToSave:String = rateTextField.text!
         
         if(editMode){
-            updateUserToDB(name: nameToSave, desg: desgToSave, rate: rateToSave)
+            //updateUserToDB(name: nameToSave, desg: desgToSave, rate: rateToSave)
         }
         
         else{

@@ -48,8 +48,6 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         fetchFromDB()
         refresh()
         self.tableView.reloadData()
-        print("printing start date \(newProject.time.start_date)")
-        
     }
     
 
@@ -102,13 +100,14 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             
             fetchFromDB()
             let displayName = people_assigned[indexPath.row]
-            cell.nameLabel.text = displayName.value(forKeyPath: "name") as? String
+            let project_fetched_name = displayName.value(forKeyPath: "personName") as? String
+            cell.nameLabel.text = project_fetched_name
             cell.moduleLabel.text = displayName.value(forKeyPath: "module") as? String
             let hour_label_text = (displayName.value(forKeyPath: "hours") as? String)!
             cell.hourLabel.text = "\(hour_label_text) hrs"
-            let cost_label_text = (displayName.value(forKeyPath: "rate") as? String)!
+            //let cost_label_text = (displayName.value(forKeyPath: "rate") as? String)!
             //total_cost = total_cost + Int(cost_label_text)!
-            cell.costLabel.text = "\(cost_label_text) Rs"
+            //cell.costLabel.text = "\(cost_label_text) Rs"
             //have to add the code for labels
             return cell
         }
@@ -352,31 +351,31 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     func fetchFromDB() //fetching from person assigned
         //soon to be replaced
     {
+        
+        if(editMode)
+        {
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest <NSFetchRequestResult>(entityName : "PersonAssigned")
+        request.predicate = NSPredicate(format : "projectName contains[c] %@", newProject.projectName)
         request.returnsObjectsAsFaults = false
-        
         do
         {
             people_assigned = try context.fetch(request) as! [NSManagedObject]
-//            if people_assigned.count > 0
-//            {
-//                for row in 0...people_assigned.count-1
-//                {
-//                    let displayName = people_assigned[row]
-//                    let fetch_name = displayName.value(forKeyPath: "name") as? String
-//                    fetch_rate = (displayName.value(forKeyPath: "rate") as? String)!
-//                    pickerData.append(fetch_name!)
-//                }
-//            }
+            if people_assigned.count > 0
+            {
+                //nothing much to do here
+            }
+            
             
         }
         catch
         {
             print("Fetch operation failed")
         }
-        
+            
+        }
         person_count = people_assigned.count
         
     }
