@@ -16,8 +16,12 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     var person_count = 0
     var people_assigned:[NSManagedObject] = []
     var editMode : Bool = false
+    var viewMode : Bool = false
     var total_cost : Int = 0
     var searchName = String()
+    
+    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     //var newProject = projectDetails()
     
@@ -29,8 +33,14 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         {
             fillvalues()
             searchName = newProject.projectName
+            title = newProject.projectName
+            if (viewMode)
+            {
+                saveButton.isEnabled = false
+            }
         }
-        
+            
+            
         else
         {
             newProject.projectName = ""
@@ -253,6 +263,44 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         print("client-name is \(newProject.clientName)")
         
     }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        if(indexPath.section == 1)
+        {
+            return true
+        }
+        
+        else
+        {
+            return false
+
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+        let index = indexPath.row
+        
+        if editingStyle == .delete {
+            managedObjectContext.delete(people_assigned[indexPath.row])
+            
+            do {
+                try managedObjectContext.save()
+                self.tableView.reloadData()
+                
+            }
+                
+            catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+        }
+        
+    }
+
+    
     
     
     func refresh(){

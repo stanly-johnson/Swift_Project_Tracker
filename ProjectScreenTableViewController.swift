@@ -128,6 +128,7 @@ class ProjectScreenTableViewController: UITableViewController {
             }
             let project = projects[indexPath.row]
             selectedViewController.editMode = true
+            selectedViewController.viewMode = false
             newProject.projectName = (project.value(forKeyPath: "name") as? String)!
             newProject.clientName = (project.value(forKeyPath: "client") as? String)!
             newProject.time.start_date = (project.value(forKeyPath: "startDate") as? String)!

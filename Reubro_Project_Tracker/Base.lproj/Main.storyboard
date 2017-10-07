@@ -593,6 +593,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="saveButton" destination="aOG-HH-Aqj" id="Whe-dj-NUw"/>
                         <segue destination="rwt-5w-LxK" kind="presentation" identifier="assignPersonSegue" id="d5L-hT-Lto"/>
                     </connections>
                 </tableViewController>
