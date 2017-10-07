@@ -50,6 +50,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameStatusOfProject" destination="wI9-2V-FbG" id="zXf-np-AFX"/>
+                                            <segue destination="YoE-w6-emP" kind="show" identifier="HomeScreenDetail" id="bCf-O7-ofF"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -930,7 +931,7 @@
         <image name="icons8-Project-30.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="bCf-O7-ofF"/>
         <segue reference="aUu-rA-Hld"/>
-        <segue reference="k2t-AU-WTb"/>
     </inferredMetricsTieBreakers>
 </document>

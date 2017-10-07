@@ -108,8 +108,6 @@ class Add_New_Person: UIViewController, UITextFieldDelegate {
     let text = nameTextField.text ?? ""
         //print (!test.isEmpty)
     saveButton.isEnabled = !text.isEmpty
-    
-    
     }
     
     
