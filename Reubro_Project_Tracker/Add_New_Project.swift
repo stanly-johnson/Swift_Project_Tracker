@@ -320,12 +320,12 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         hoursProjectCell?.textField.text = newProject.time.hours_project
         
         let switchCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 4)) as Any) as? StatusCell
-        if (switchCell?.completedSwitch.isOn)!
+        if ((switchCell?.completedSwitch.isOn))!
         {
             newProject.completed = true
         }
         
-        if (switchCell?.closedSwitch.isOn)!
+        if ((switchCell?.closedSwitch.isOn))!
         {
             newProject.closed = true
         }
@@ -587,7 +587,15 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             selectedViewController.editMode = true
             selectedViewController.selectedProject = newProject.projectName
             let project_name_to_send = person.value(forKeyPath: "personName") as? String
+            let startDate_to_send = person.value(forKeyPath: "startDate") as? String
+            let endDate_to_send = person.value(forKeyPath: "endDate") as? String
+            let module_to_send = person.value(forKeyPath: "module") as? String
+            let hours_to_send = person.value(forKeyPath: "hours") as? String
             selectedViewController.incoming_person_name = project_name_to_send!
+            selectedViewController.selectedHours = hours_to_send!
+            selectedViewController.startDate = startDate_to_send!
+            selectedViewController.endDate = endDate_to_send!
+            selectedViewController.module_name = module_to_send!
             
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")

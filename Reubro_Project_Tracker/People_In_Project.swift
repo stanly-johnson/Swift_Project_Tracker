@@ -37,6 +37,7 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var fetch_rate = String()
     var cost = String()
     var incoming_person_name = String()
+    var module_name = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,10 +46,35 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         self.moduleTextField.delegate = self
         self.hourPicker.delegate = self
         
+        
         if (editMode)
         {
             personPicker.isHidden = true
             selectPersonLabel.text = incoming_person_name
+            selectedPerson = incoming_person_name
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "d/M/yy"
+            if let convertedStartDate = dateFormatter.date(from: startDate) {
+                startDatePicker.setDate(convertedStartDate, animated: false)
+            }
+            if let convertedEndDate = dateFormatter.date(from: endDate) {
+                endDatePicker.setDate(convertedEndDate, animated: false)
+            }
+            moduleTextField.text = module_name
+            hourPicker.selectRow(Int(selectedHours)!+1, inComponent: 0, animated: false)
+            
+            
+        }
+        
+        else
+        {
+            startDatePicker.setDate(Date(), animated: false)
+            endDatePicker.setDate(Date(), animated: false)
+            startDate = ""
+            endDate = ""
+            module_name = ""
+            selectedHours = ""
         }
         
         
@@ -214,6 +240,54 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         //---end of saving to database --//
     }
     
+    func updateToDB()
+    {
+        //---saving to database ---//
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "PersonAssigned")
+        fetchRequest.predicate = NSPredicate(format : "(personName contains[c] %@)AND(projectName contains[c] %@)", incoming_person_name,selectedProject)
+        
+        do
+        {
+            
+            let test_person = try managedContext.fetch(fetchRequest) as? [NSManagedObject]
+            
+            if(test_person!.count == 1)
+            {
+                let person = test_person![0]
+                person.setValue(startDate, forKey: "startDate")
+                person.setValue(endDate, forKey: "endDate")
+                person.setValue(selectedHours, forKey: "hours")
+                person.setValue(moduleTextField.text, forKey: "module")
+                person.setValue(selectedPerson, forKey:"personName")
+                person.setValue(selectedProject, forKey: "projectName")
+                let calc = String(Int(selectedHours)! * Int(fetch_rate)!)
+                person.setValue(calc, forKey:"rate")
+                
+                do
+                {
+                    try managedContext.save()
+                    print("Succesfully edited project in database")
+                }
+                    
+                catch let error as NSError {
+                    print("Error!! Could not save. \(error), \(error.userInfo)")
+                }
+            }
+        }
+            
+        catch
+        {
+            print(error)
+        }
+        
+        //---end of saving to database --//
+        
+    }
     
     
     // MARK: - DatePicker
@@ -252,7 +326,17 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     
     @IBAction func saveButton(_ sender: Any) {
-        insertIntoDB()
+        
+        if(editMode)
+        {
+            updateToDB()
+        }
+        
+        else
+        {
+            insertIntoDB()
+        }
+        
         dismiss(animated: true, completion: nil)
     }
     
