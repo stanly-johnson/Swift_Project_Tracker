@@ -170,11 +170,12 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
                 fatalError("The dequeued cell is not an instance of StatusCell.")
             }
             
+            //print(newProject.completed)
             if (newProject.completed)
             {
                 cell.completedSwitch.setOn(true, animated: true)
             }
-            
+            //print(newProject.closed)
             if (newProject.closed)
             {
                 cell.closedSwitch.setOn(true, animated: true)
@@ -317,6 +318,20 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         
         let hoursProjectCell = (tableView.cellForRow(at: IndexPath(row: 2 , section: 2)) as Any) as? AddNewProjectTableViewCell
         hoursProjectCell?.textField.text = newProject.time.hours_project
+        
+        let switchCell = (tableView.cellForRow(at: IndexPath(row: 0 , section: 4)) as Any) as? StatusCell
+        if (switchCell?.completedSwitch.isOn)!
+        {
+            newProject.completed = true
+        }
+        
+        if (switchCell?.closedSwitch.isOn)!
+        {
+            newProject.closed = true
+        }
+       
+
+        
     }
     
     
@@ -571,6 +586,9 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             let person = people_assigned[indexPath.row]
             selectedViewController.editMode = true
             selectedViewController.selectedProject = newProject.projectName
+            let project_name_to_send = person.value(forKeyPath: "personName") as? String
+            selectedViewController.incoming_person_name = project_name_to_send!
+            
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }

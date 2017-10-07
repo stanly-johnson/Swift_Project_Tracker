@@ -19,6 +19,7 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var personPicker: UIPickerView!
     
+    @IBOutlet weak var selectPersonLabel: UILabel!
     @IBOutlet weak var endDatePicker: UIDatePicker!
     @IBOutlet weak var startDatePicker: UIDatePicker!
     
@@ -35,6 +36,7 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var selectedProject = String()
     var fetch_rate = String()
     var cost = String()
+    var incoming_person_name = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +47,8 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         if (editMode)
         {
-            
+            personPicker.isHidden = true
+            selectPersonLabel.text = incoming_person_name
         }
         
         
