@@ -238,7 +238,7 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         if (editMode)
         {
-            self.navigationController?.popViewController(animated: true)
+            dismiss(animated: true, completion: nil)
         }
         
         else

@@ -510,9 +510,8 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             selectedViewController.selectedProject = newProject.projectName
             
         case "PersonEdit":
-            guard let selectedViewController = segue.destination as? People_In_Project else {
-                fatalError("Unexpected Destination; \(segue.destination)")
-            }
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let selectedViewController = destinationNavigationController.topViewController as! People_In_Project
             
             guard let selectedTableCell = sender as? PersonCell else {
                 fatalError("Unexpected sender -- table cell \(sender)")
@@ -524,8 +523,6 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             let person = people_assigned[indexPath.row]
             selectedViewController.editMode = true
             selectedViewController.selectedProject = newProject.projectName
-            
-            
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }

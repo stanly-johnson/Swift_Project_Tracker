@@ -569,7 +569,7 @@
                                     <outlet property="hourLabel" destination="uN9-hG-MDr" id="rkw-D5-NmQ"/>
                                     <outlet property="moduleLabel" destination="ws9-lU-Sn2" id="jI5-la-RUf"/>
                                     <outlet property="nameLabel" destination="Fis-In-dAg" id="EEU-Ad-OIq"/>
-                                    <segue destination="2Pb-A4-6Cx" kind="show" identifier="PersonEdit" action="showDetailViewController:sender:" id="uFS-0l-Rv7"/>
+                                    <segue destination="rwt-5w-LxK" kind="presentation" identifier="PersonEdit" id="Kh9-tZ-GPk"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -613,7 +613,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gx5-XH-ab7">
-                                <rect key="frame" x="0.0" y="64" width="414" height="628"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96I-Xj-pcg" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
@@ -934,6 +934,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="aUu-rA-Hld"/>
         <segue reference="bCf-O7-ofF"/>
-        <segue reference="uFS-0l-Rv7"/>
+        <segue reference="Kh9-tZ-GPk"/>
     </inferredMetricsTieBreakers>
 </document>
