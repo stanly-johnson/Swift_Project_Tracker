@@ -17,6 +17,7 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     var people_assigned:[NSManagedObject] = []
     var editMode : Bool = false
     var total_cost : Int = 0
+    var searchName = String()
     
     //var newProject = projectDetails()
     
@@ -27,6 +28,7 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         if(editMode)
         {
             fillvalues()
+            searchName = newProject.projectName
         }
         
         else
@@ -324,6 +326,55 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
     }
     
     
+    func updateToDB()
+    {
+        //---saving to database ---//
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Project")
+        fetchRequest.predicate = NSPredicate(format : "name contains[c] %@", searchName)
+        
+       do
+       {
+        
+            let test_project = try managedContext.fetch(fetchRequest) as? [NSManagedObject]
+        
+            if(test_project!.count == 1)
+                {
+                        let project = test_project![0]
+                        project.setValue(newProject.projectName, forKeyPath: "name")
+                        project.setValue(newProject.clientName, forKey: "client")
+                        project.setValue(newProject.time.start_date, forKey: "startDate")
+                        project.setValue(newProject.time.end_date, forKey: "endDate")
+                        project.setValue(newProject.time.hours_project, forKey: "hours")
+                        project.setValue(newProject.closed, forKey: "closed")
+                        project.setValue(newProject.completed, forKey: "completed")
+        
+                    do
+                    {
+                        try managedContext.save()
+                        print("Succesfully edited project in database")
+                    }
+            
+                    catch let error as NSError {
+                        print("Error!! Could not save. \(error), \(error.userInfo)")
+                    }
+            }
+        }
+        
+        catch
+        {
+            print(error)
+        }
+        
+        //---end of saving to database --//
+        
+    }
+    
+    
     func fetchFromDB() //fetching from person assigned
         //soon to be replaced
     {
@@ -393,7 +444,15 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         
         else
         {
-            insertToDB()
+            if (editMode)
+            {
+                updateToDB()
+            }
+            
+            else
+            {
+                insertToDB()
+            }
         }
         
         if(editMode)
@@ -449,6 +508,23 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             let destinationNavigationController = segue.destination as! UINavigationController
             let selectedViewController = destinationNavigationController.topViewController as! ScheduleEdit
             selectedViewController.selectedProject = newProject.projectName
+            
+        case "PersonEdit":
+            guard let selectedViewController = segue.destination as? People_In_Project else {
+                fatalError("Unexpected Destination; \(segue.destination)")
+            }
+            
+            guard let selectedTableCell = sender as? PersonCell else {
+                fatalError("Unexpected sender -- table cell \(sender)")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedTableCell) else {
+                fatalError("The selected cell is not in table")
+            }
+            let person = people_assigned[indexPath.row]
+            selectedViewController.editMode = true
+            selectedViewController.selectedProject = newProject.projectName
+            
             
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")

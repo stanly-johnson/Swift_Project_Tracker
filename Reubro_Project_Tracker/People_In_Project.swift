@@ -25,6 +25,7 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var pickerData: [String] = [String]()
     var person:[NSManagedObject] = []
     var fetch_count = 0
+    var editMode : Bool = false
     
     let max_hours = 50 //change this value to change the max hours shown with picker view
     var startDate = String()
@@ -39,9 +40,14 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         super.viewDidLoad()
         fetchFromDB()
         title = selectedProject
-        //personPicker.selectRow(3, inComponent: 0, animated: true)
         self.moduleTextField.delegate = self
         self.hourPicker.delegate = self
+        
+        if (editMode)
+        {
+            
+        }
+        
         
     }
 
@@ -229,7 +235,16 @@ class People_In_Project: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     // MARK: - Navigation
     
     @IBAction func actionCancelButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        
+        if (editMode)
+        {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        else
+        {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     

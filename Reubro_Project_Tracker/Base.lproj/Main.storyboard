@@ -569,6 +569,7 @@
                                     <outlet property="hourLabel" destination="uN9-hG-MDr" id="rkw-D5-NmQ"/>
                                     <outlet property="moduleLabel" destination="ws9-lU-Sn2" id="jI5-la-RUf"/>
                                     <outlet property="nameLabel" destination="Fis-In-dAg" id="EEU-Ad-OIq"/>
+                                    <segue destination="2Pb-A4-6Cx" kind="show" identifier="PersonEdit" action="showDetailViewController:sender:" id="uFS-0l-Rv7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -597,7 +598,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GCD-y2-ydz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2124.6376811594205" y="1025.5434782608697"/>
+            <point key="canvasLocation" x="2329" y="1163"/>
         </scene>
         <!--Assign Person-->
         <scene sceneID="Qqk-bE-wqC">
@@ -612,7 +613,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gx5-XH-ab7">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="628"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96I-Xj-pcg" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
@@ -743,7 +744,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XoB-zF-2Ua" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3878" y="1026"/>
+            <point key="canvasLocation" x="4239" y="1163"/>
         </scene>
         <!--Home-->
         <scene sceneID="f2O-s9-1vZ">
@@ -885,7 +886,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fRd-bg-2aH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3877" y="1754"/>
+            <point key="canvasLocation" x="3513" y="1951"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yx0-xt-gRs">
@@ -903,7 +904,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cmn-Py-7FI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3014" y="1026"/>
+            <point key="canvasLocation" x="3354" y="1163"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aSw-ta-eKv">
@@ -921,7 +922,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrB-1X-bYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3032" y="1755"/>
+            <point key="canvasLocation" x="2329" y="1951"/>
         </scene>
     </scenes>
     <resources>
@@ -931,7 +932,8 @@
         <image name="icons8-Project-30.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bCf-O7-ofF"/>
         <segue reference="aUu-rA-Hld"/>
+        <segue reference="bCf-O7-ofF"/>
+        <segue reference="uFS-0l-Rv7"/>
     </inferredMetricsTieBreakers>
 </document>
