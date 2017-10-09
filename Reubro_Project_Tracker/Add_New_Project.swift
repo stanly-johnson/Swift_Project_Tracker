@@ -37,6 +37,7 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
             if (viewMode)
             {
                 saveButton.isEnabled = false
+                
             }
         }
             
@@ -223,12 +224,22 @@ class Add_New_Project: UITableViewController, UITextFieldDelegate {
         if section == 1
         {
             let header = tableView.dequeueReusableCell(withIdentifier: "People_Section_Header")! as! People_Section_Header
+            if(viewMode)
+            {
+                header.buttonAddNewPerson.isUserInteractionEnabled = false
+            }
+            
+            
             return header.contentView
         }
             
         if section == 2
         {
             let header = tableView.dequeueReusableCell(withIdentifier: "Sechdule_Section_Header")! as! Sechdule_Section_Header
+            if(viewMode)
+            {
+                header.editButton.isUserInteractionEnabled = false
+            }
             return header.contentView
         }
             
