@@ -6,6 +6,15 @@
 //  Copyright © 2017 Reubro. All rights reserved.
 //
 
+//************************************************
+//
+//Project closed on 10 Oct 2017
+//Programmer : Stanly Johnson
+//
+//************************************************
+
+
+
 import UIKit
 import CoreData
 
