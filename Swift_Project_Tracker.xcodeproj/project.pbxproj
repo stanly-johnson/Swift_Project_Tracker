@@ -18,7 +18,7 @@
 		4C71BF461F70FBEF00C073EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C71BF451F70FBEF00C073EA /* AppDelegate.swift */; };
 		4C71BF481F70FBEF00C073EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C71BF471F70FBEF00C073EA /* ViewController.swift */; };
 		4C71BF4B1F70FBF000C073EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C71BF491F70FBF000C073EA /* Main.storyboard */; };
-		4C71BF4E1F70FBF000C073EA /* Reubro_Project_Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C71BF4C1F70FBF000C073EA /* Reubro_Project_Tracker.xcdatamodeld */; };
+		4C71BF4E1F70FBF000C073EA /* Swift_Project_Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C71BF4C1F70FBF000C073EA /* Swift_Project_Tracker.xcdatamodeld */; };
 		4C71BF501F70FBF000C073EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C71BF4F1F70FBF000C073EA /* Assets.xcassets */; };
 		4C71BF531F70FBF000C073EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C71BF511F70FBF000C073EA /* LaunchScreen.storyboard */; };
 		4C71BF5B1F70FCB800C073EA /* PeopleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C71BF5A1F70FCB800C073EA /* PeopleScreen.swift */; };
@@ -158,7 +158,7 @@
 				4C71BF511F70FBF000C073EA /* LaunchScreen.storyboard */,
 				4C7F407F1F75060B004847DF /* Images */,
 				4C71BF541F70FBF000C073EA /* Info.plist */,
-				4C71BF4C1F70FBF000C073EA /* Reubro_Project_Tracker.xcdatamodeld */,
+				4C71BF4C1F70FBF000C073EA /* Swift_Project_Tracker.xcdatamodeld */,
 			);
 			path = Swift_Project_Tracker;
 			sourceTree = "<group>";
@@ -306,7 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C71BF4E1F70FBF000C073EA /* Reubro_Project_Tracker.xcdatamodeld in Sources */,
+				4C71BF4E1F70FBF000C073EA /* Swift_Project_Tracker.xcdatamodeld in Sources */,
 				4CE4A9871F7BD08100BFF85D /* Sechdule_Section_Header.swift in Sources */,
 				4C6FD0E81F7E055B009A6C6B /* PersonCell.swift in Sources */,
 				4C7F40811F750710004847DF /* Add_New_Person.swift in Sources */,
@@ -448,7 +448,7 @@
 		4C71BF581F70FBF000C073EA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DQTX7SGDK4;
 				INFOPLIST_FILE = Swift_Project_Tracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -462,7 +462,7 @@
 		4C71BF591F70FBF000C073EA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DQTX7SGDK4;
 				INFOPLIST_FILE = Swift_Project_Tracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -497,13 +497,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		4C71BF4C1F70FBF000C073EA /* Reubro_Project_Tracker.xcdatamodeld */ = {
+		4C71BF4C1F70FBF000C073EA /* Swift_Project_Tracker.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				4C71BF4D1F70FBF000C073EA /* Reubro_Project_Tracker.xcdatamodel */,
 			);
 			currentVersion = 4C71BF4D1F70FBF000C073EA /* Reubro_Project_Tracker.xcdatamodel */;
-			path = Reubro_Project_Tracker.xcdatamodeld;
+			path = Swift_Project_Tracker.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
