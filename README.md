@@ -1,6 +1,7 @@
 # Project Tracker App
-<br />
+
 Written in Swift 3
+<br />
 
 <img src="/screenshots/addproject.png" alt="Add Project Screen" style="float: left; height : 200, width : 200" />
 
